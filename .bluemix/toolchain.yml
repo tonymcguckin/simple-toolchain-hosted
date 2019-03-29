@@ -27,24 +27,24 @@ services:
       - $ifdef: 'hostedgit'
         service_id: hostedgit
         parameters:
-          repo_name: '{{toolchain.name}}'
-          repo_url: 'https://github.com/open-toolchain/node-hello-world'
-          type: clone
+          repo_name: 'BYOC MyApp'
+          repo_url: 'https://git.com/myrepo/byoc-myapp-onhostedgit'
+          type: existing
           has_issues: true
           enable_traceability: true
       - $ifdef: 'githubpublic'
         service_id: githubpublic
         parameters:
-          repo_name: 'sample-repo-ongithubpublic'
-          repo_url: 'https://github.com/otc/sample-repo-ongithubpublic'
+          repo_name: 'BYOC MyApp'
+          repo_url: 'https://github.com/myrepo/byoc-myapp-ongithubpublic'
           type: existing
           visibility: public
-      - $ifdef: 'github_integrated_for_tracking'
+      - $ifdef: 'github_integrated'
         service_id: github_integrated
         parameters:
-          repo_name: 'sample-repo-ongithub_integrated'
-          repo_url: 'https://cloud.ibm.github.com/otc/sample-repo-ongithub_integrated'
-          type: clone
+          repo_name: 'BYOC MyApp'
+          repo_url: 'https://cloud.ibm.github.com/myrepo/myapp-ongithub_integrated'
+          type: existing
           has_issues: true
           enable_traceability: true
   sample-build:
