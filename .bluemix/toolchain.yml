@@ -29,7 +29,7 @@ services:
         parameters:
           repo_name: 'BYOC MyApp'
           repo_url: 'https://git.com/myrepo/byoc-myapp-onhostedgit'
-          type: existing
+          type: 'Existing'
           has_issues: true
           enable_traceability: true
       - $ifdef: 'githubpublic'
@@ -37,14 +37,14 @@ services:
         parameters:
           repo_name: 'BYOC MyApp'
           repo_url: 'https://github.com/myrepo/byoc-myapp-ongithubpublic'
-          type: existing
+          type: 'Existing'
           visibility: public
       - $ifdef: 'github_integrated'
         service_id: github_integrated
         parameters:
           repo_name: 'BYOC MyApp'
           repo_url: 'https://cloud.ibm.github.com/myrepo/myapp-ongithub_integrated'
-          type: existing
+          type: 'Existing'
           has_issues: true
           enable_traceability: true
   sample-build:
