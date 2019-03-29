@@ -23,6 +23,7 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
+    $default: 'hostedgit'
     $options:
       - $ifdef: 'hostedgit'
         service_id: hostedgit
