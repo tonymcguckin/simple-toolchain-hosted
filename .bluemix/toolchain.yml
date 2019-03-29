@@ -2,10 +2,8 @@ version: '2'
 messages:
   $i18n: locales.yml
 template:
-  name:
-    $ref: "#/messages/template.name"
-  description:
-    $ref: "#/messages/template.description"
+  name: "Simple BYOC c/w Dynamic Source Providers"
+  description: "Simple BYOC c/w Dynamic Source Providers"
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
@@ -13,11 +11,11 @@ template:
     - sample-repo
   info:
     git url: >-
-      [https://github.com/open-toolchain/simple-toolchain-hosted](https://github.com/open-toolchain/simple-toolchain-hosted)
+      [https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)
     git branch: >-
-      [master](https://github.com/open-toolchain/simple-toolchain-hosted/tree/master)
+      [master](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/master)
 toolchain:
-  name: 'simple-toolchain-{{timestamp}}'
+  name: 'Simple BYOC c/w Dynamic Source Providers'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
