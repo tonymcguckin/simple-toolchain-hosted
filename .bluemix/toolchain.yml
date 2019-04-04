@@ -28,7 +28,7 @@ services:
         service_id: hostedgit
         parameters:
           repo_name: 'BYOC MyApp'
-          repo_url: 'https://git.stage1.ng.bluemix.com/myrepo/byoc-myapp-onhostedgit'
+          repo_url: '{{app_repo}}'
           type: 'link'
           has_issues: true
           enable_traceability: true
@@ -36,14 +36,14 @@ services:
         service_id: githubpublic
         parameters:
           repo_name: 'BYOC MyApp'
-          repo_url: 'https://github.com/myrepo/byoc-myapp-ongithubpublic'
+          repo_url: '{{app_repo}}'
           type: 'link'
           visibility: public
       - $ifdef: 'github_integrated'
         service_id: github_integrated
         parameters:
           repo_name: 'BYOC MyApp'
-          repo_url: 'https://github.stage1.ng.bluemix.com/myrepo/myapp-ongithub_integrated'
+          repo_url: '{{app_repo}}'
           type: 'link'
           has_issues: true
           enable_traceability: true
