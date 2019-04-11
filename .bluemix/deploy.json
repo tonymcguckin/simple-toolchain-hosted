@@ -44,13 +44,6 @@
             },
             "type": "string",
             "pattern": "\\S"
-        },
-        "prod-app-name11": {
-            "description": {
-                "$ref": "#/messages/deploy.appDescription"
-            },
-            "type": "string",
-            "pattern": "\\S"
         }
     },
     "required": [
