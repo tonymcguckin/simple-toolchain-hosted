@@ -9,6 +9,7 @@ template:
   required:
     - sample-build
     - sample-repo
+    - foo-repo
   info:
     git url: >-
       [https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)
@@ -20,6 +21,7 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
+  foo-repo: {}
   sample-repo:
     $parameter: 'source_provider'
     $default: 'hostedgit'
