@@ -21,7 +21,6 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  foo-repo: {}
   sample-repo:
     $parameter: 'source_provider'
     $default: 'hostedgit'
