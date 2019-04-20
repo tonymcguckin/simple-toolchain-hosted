@@ -23,7 +23,7 @@ services:
   sample-repo:
     $switch:
       - $expr: $env.source_provider
-      - $case: 'hostedgit'
+      - $default: hostedgit
         service_id: hostedgit
         parameters:
           repo_name: 'BYOC MyApp'
@@ -64,24 +64,21 @@ services:
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
+
   webide:
     $switch:
       - $expr: $env.webide
       - $default: 'false'
       - $case: 'true'
         service_id: orion
+
   webide2:
     $switch:
       - $expr: $env.webide
-      - $default: 'yup'
-      - $case: 'true'
-        service_id: orion2
-        parameters:
-          case: 'true-case'
-      - $case: 'false'
-        service_id: orion2
-        parameters:
-          case: 'false-case'
+      - $default: false
+      - $case: true
+        service_id: orion
+
   webide3:
     $switch:
       - $expr: $env.webide
