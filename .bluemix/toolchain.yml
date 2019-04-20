@@ -70,12 +70,36 @@ services:
       - $default: 'false'
       - $case: 'true'
         service_id: orion
-  ide:
+  ide0:
     $switch:
-      - $expr: $env.ide
+      - $expr: $env.ide0
+      - $default: ""
+      - $case: 'yam0'
+        service_id: yam0
+  ide1:
+    $switch:
+      - $expr: $env.ide1
       - $default: ''
-      - $case: 'yam'
-        service_id: yam
+      - $case: 'yam1'
+        service_id: yam1
+  ide2:
+    $switch:
+      - $expr: $env.ide2
+      - $default: {}
+      - $case: 'yam2'
+        service_id: yam2
+  ide3:
+    $switch:
+      - $expr: $env.ide3
+      - $default: false
+      - $case: 'yam3'
+        service_id: yam3
+  ide4:
+    $switch:
+      - $expr: $env.ide4
+      - $default: true
+      - $case: 'yam4'
+        service_id: yam4
 form:
   pipeline:
     parameters:
