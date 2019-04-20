@@ -25,7 +25,6 @@ services:
     $switch:
       - $expr: $env.source_provider
       - $default: 'hostedgit'
-      - $case: 'hostedgit'
         service_id: hostedgit
         parameters:
           repo_name: 'BYOC MyApp'
