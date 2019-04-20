@@ -160,6 +160,18 @@ services:
       - $default: '1'
       - $case: 'yam14'
         service_id: yam14
+  ide15:
+    $switch:
+      - $expr: $env.ide15
+      - $default: 99
+      - $case: 'yam15'
+        service_id: yam15
+  ide16:
+    $switch:
+      - $expr: $env.ide16
+      - $default: 99.99
+      - $case: 'yam16'
+        service_id: yam16
 form:
   pipeline:
     parameters:
