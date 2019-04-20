@@ -72,7 +72,7 @@ services:
         service_id: orion
   webide2:
     $switch:
-      - $expr: $env.webide2
+      - $expr: $env.webide
       - $default: 'yup'
       - $case: 'true'
         service_id: orion2
@@ -84,7 +84,7 @@ services:
           case: 'false-case'
   webide3:
     $switch:
-      - $expr: $env.webide3
+      - $expr: $env.webide
       - $default: 'yup'
       - $case: true
         service_id: orion3
@@ -96,7 +96,7 @@ services:
           case: 'false-case'
   webide4:
     $switch:
-      - $expr: $env.webide4
+      - $expr: $env.webide
       - $default: 'yup'
       - $case: 'true'
         service_id: orion4
