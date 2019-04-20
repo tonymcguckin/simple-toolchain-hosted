@@ -202,6 +202,7 @@ services:
     $switch:
       - $expr: $env.ide11
       - $default: 0
+        service_id: orion
       - $case: 'yam11'
         service_id: orion
   ide12:
@@ -214,6 +215,7 @@ services:
     $switch:
       - $expr: $env.ide13
       - $default: '0'
+        service_id: orion
       - $case: 'yam13'
         service_id: orion
   ide14:
