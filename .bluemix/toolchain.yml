@@ -100,6 +100,54 @@ services:
       - $default: true
       - $case: 'yam4'
         service_id: yam4
+  ide5:
+    $switch:
+      - $expr: $env.ide5
+      - $default: 'true'
+      - $case: 'yam5'
+        service_id: yam5
+  ide6:
+    $switch:
+      - $expr: $env.ide6
+      - $default: 'false'
+      - $case: 'yam6'
+        service_id: yam6
+  ide7:
+    $switch:
+      - $expr: $env.ide7
+      - $default: "true"
+      - $case: 'yam7'
+        service_id: yam7
+  ide8:
+    $switch:
+      - $expr: $env.ide8
+      - $default: "false"
+      - $case: 'yam8'
+        service_id: yam8
+  ide9:
+    $switch:
+      - $expr: $env.ide9
+      - $default: "FALSE"
+      - $case: 'yam9'
+        service_id: yam9
+  ide10:
+    $switch:
+      - $expr: $env.ide10
+      - $default: "TRUE"
+      - $case: 'yam10'
+        service_id: yam10
+  ide11:
+    $switch:
+      - $expr: $env.ide11
+      - $default: 0
+      - $case: 'yam11'
+        service_id: yam11
+  ide12:
+    $switch:
+      - $expr: $env.ide12
+      - $default: 1
+      - $case: 'yam12'
+        service_id: yam12
 form:
   pipeline:
     parameters:
