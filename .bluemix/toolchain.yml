@@ -70,6 +70,12 @@ services:
       - $default: 'false'
       - $case: 'true'
         service_id: orion
+  ide:
+    $switch:
+      - $expr: $env.ide
+      - $default: ''
+      - $case: 'yam'
+        service_id: yam
 form:
   pipeline:
     parameters:
