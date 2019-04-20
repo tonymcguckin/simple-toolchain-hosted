@@ -94,7 +94,7 @@ services:
 
   yuppy:
     $switch:
-      - $expr: $env.webide
+      - $expr: $env.yuppy
       - $default: 'yup'
       - $case: 'yim'
         service_id: orion
