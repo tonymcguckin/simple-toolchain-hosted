@@ -9,7 +9,6 @@ template:
   required:
     - sample-build
     - sample-repo
-    - foo-repo
   info:
     git url: >-
       [https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)
