@@ -75,11 +75,13 @@ services:
       - $expr: $env.webide2
       - $default: 'yup'
       - $case: 'true'
-        service_id: orion
-        case: 'false-case'
+        service_id: orion1
+        parameters:
+          case: 'false-case'
       - $case: 'false'
-        service_id: orion
-        case: 'false-case'
+        service_id: orion2
+        parameters:
+          case: 'false-case'
   ide0:
     $switch:
       - $expr: $env.ide0
