@@ -70,6 +70,14 @@ services:
       - $default: 'false'
       - $case: 'true'
         service_id: orion
+  webide2:
+    $switch:
+      - $expr: $env.webide2
+      - $default: 'yup'
+      - $case: 'true'
+        service_id: orion
+      - $case: 'false'
+        service_id: orion
   ide0:
     $switch:
       - $expr: $env.ide0
