@@ -114,6 +114,25 @@ services:
         service_id: orion4
         parameters:
           case: 'false-case-boolean'
+  webide5:
+    $switch:
+      - $expr: $env.webide2
+      - $default: 2
+        service_id: orion5
+        parameters:
+          case: '2-case'
+      - $case: 0.33
+        service_id: orion5
+        parameters:
+          case: '0.33-case'
+      - $case: 40.1
+        service_id: orion5
+        parameters:
+          case: '40.1-case'
+      - $case: 50.111
+        service_id: orion5
+        parameters:
+          case: '50.111-case'
   ide0:
     $switch:
       - $expr: $env.ide0
