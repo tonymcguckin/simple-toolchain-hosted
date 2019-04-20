@@ -172,6 +172,12 @@ services:
       - $default: 99.99
       - $case: 'yam16'
         service_id: yam16
+  ide17:
+    $switch:
+      - $expr: $env.ide17
+      - $default: monkey
+      - $case: 'yam17'
+        service_id: yam17
 form:
   pipeline:
     parameters:
