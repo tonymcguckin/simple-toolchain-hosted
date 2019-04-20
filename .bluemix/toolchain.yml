@@ -22,25 +22,25 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
-    $parameter: 'source_provider'
-    $default: 'hostedgit'
-    $options:
-      - $ifdef: 'hostedgit'
+    $switch:
+      - $expr: $env.source_provider
+      - $default: 'hostedgit'
+      - $case: 'hostedgit'
         service_id: hostedgit
         parameters:
           repo_name: 'BYOC MyApp'
-          repo_url: '{{app_repo}}'
-          type: 'link'
+          repo_url: $env.app_repo || 'http://blah.com/repo'
+          type: $env.type || 'link'
           has_issues: true
           enable_traceability: true
-      - $ifdef: 'githubpublic'
+      - $case: 'githubpublic'
         service_id: githubpublic
         parameters:
           repo_name: 'BYOC MyApp'
           repo_url: '{{app_repo}}'
           type: 'link'
           visibility: public
-      - $ifdef: 'github_integrated'
+      - $case: 'github_integrated'
         service_id: github_integrated
         parameters:
           repo_name: 'BYOC MyApp'
@@ -67,7 +67,11 @@ services:
           API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
   webide:
-    service_id: orion
+    $switch:
+      - $expr: $env.webide
+      - $default: 'false'
+      - $case: 'true'
+        service_id: orion
 form:
   pipeline:
     parameters:
