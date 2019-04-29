@@ -9,7 +9,7 @@ template:
   required:
     - sample-build
     - sample-repo
- info:
+  info:
     git url: >-
       $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/dynamicyml](https://github.com/tonymcguckin/dynamicyml)"
     git branch: >-
