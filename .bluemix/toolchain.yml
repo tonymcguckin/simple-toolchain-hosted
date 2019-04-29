@@ -18,7 +18,7 @@ toolchain:
   name: 'Simple BYOC c/w Dynamic Source Providers'
   template:
     getting_started:
-      $ref: "#/messages/template.gettingStarted"
+      $ref: "#/messages/template.name"
 services:
   sample-repo:
     $switch:
