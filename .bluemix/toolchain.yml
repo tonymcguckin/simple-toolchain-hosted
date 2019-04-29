@@ -2,18 +2,18 @@ version: '2'
 messages:
   $i18n: locales.yml
 template:
-  name: "Simple BYOC c/w Dynamic Source Providers"
+  name: "Simple BYOC c/w Dynamic Source Providers (" + $env.app_name + ")"
   description: "Simple BYOC c/w Dynamic Source Providers"
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
     - sample-build
     - sample-repo
-  info:
+ info:
     git url: >-
-      [https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)
+      $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/dynamicyml](https://github.com/tonymcguckin/dynamicyml)"
     git branch: >-
-      [master](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/master)
+      $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour9](https://github.com/tonymcguckin/dynamicyml/tree/flavour9)"
 toolchain:
   name: 'Simple BYOC c/w Dynamic Source Providers'
   template:
@@ -57,7 +57,7 @@ services:
         content:
           $text: pipeline.yml
         env:
-          SAMPLE_REPO: sample-repo
+          SAMPLE_REPO: "$env.app_name ? $env.app_name : 'tmg-cf-app-1'"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -65,187 +65,9 @@ services:
           API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
 
-  webide:
-    $switch:
-      - $expr: $env.webide
-      - $default: 'false'
-      - $case: 'true'
-        service_id: orion
-
-  webide2:
-    $switch:
-      - $expr: $env.webide
-      - $default: false
-      - $case: true
-        service_id: orion
-
-  webide3:
-    $switch:
-      - $expr: $env.webide
-      - $default: 'yup'
-      - $case: true
-        service_id: orion
-        parameters:
-          case: 'true-case'
-      - $case: false
-        service_id: orion
-        parameters:
-          case: 'false-case'
-
-  yuppy:
-    $switch:
-      - $expr: $env.yuppy
-      - $default: 'yup'
-      - $case: 'yim'
-        service_id: orion
-        parameters:
-          case: 'yim'
-      - $case: 'yam'
-        service_id: orion
-        parameters:
-          case: 'yam'
-      - $case: 'yup'
-        service_id: orion
-        parameters:
-          case: 'yup'
-      - $case: 'yaz'
-        service_id: orion
-        parameters:
-          case: 'yaz'
-
-  webide5:
-    $switch:
-      - $expr: $env.webide2
-      - $default: 2
-        service_id: orion
-        parameters:
-          case: '2-case'
-      - $case: 0.33
-        service_id: orion
-        parameters:
-          case: '0.33-case'
-      - $case: 40.1
-        service_id: orion
-        parameters:
-          case: '40.1-case'
-      - $case: 50.111
-        service_id: orion
-        parameters:
-          case: '50.111-case'
-  ide0:
-    $switch:
-      - $expr: $env.ide0
-      - $default: ""
-      - $case: 'yam0'
-        service_id: orion
-  ide1:
-    $switch:
-      - $expr: $env.ide1
-      - $default: ''
-      - $case: 'yam1'
-        service_id: orion
-  ide2:
-    $switch:
-      - $expr: $env.ide2
-      - $default: {}
-      - $case: 'yam2'
-        service_id: orion
-  ide3:
-    $switch:
-      - $expr: $env.ide3
-      - $default: false
-      - $case: 'yam3'
-        service_id: orion
-  ide4:
-    $switch:
-      - $expr: $env.ide4
-      - $default: true
-      - $case: 'yam4'
-        service_id: orion
-  ide5:
-    $switch:
-      - $expr: $env.ide5
-      - $default: 'true'
-      - $case: 'yam5'
-        service_id: orion
-  ide6:
-    $switch:
-      - $expr: $env.ide6
-      - $default: 'false'
-      - $case: 'yam6'
-        service_id: orion
-  ide7:
-    $switch:
-      - $expr: $env.ide7
-      - $default: "true"
-      - $case: 'yam7'
-        service_id: orion
-  ide8:
-    $switch:
-      - $expr: $env.ide8
-      - $default: "false"
-      - $case: 'yam8'
-        service_id: orion
-  ide9:
-    $switch:
-      - $expr: $env.ide9
-      - $default: "FALSE"
-      - $case: 'yam9'
-        service_id: orion
-  ide10:
-    $switch:
-      - $expr: $env.ide10
-      - $default: "TRUE"
-      - $case: 'yam10'
-        service_id: orion
-  ide11:
-    $switch:
-      - $expr: $env.ide11
-      - $default: 0
-        service_id: orion
-      - $case: 'yam11'
-        service_id: orion
-  ide12:
-    $switch:
-      - $expr: $env.ide12
-      - $default: 1
-      - $case: 'yam12'
-        service_id: orion
-  ide13:
-    $switch:
-      - $expr: $env.ide13
-      - $default: '0'
-        service_id: orion
-      - $case: 'yam13'
-        service_id: orion
-  ide14:
-    $switch:
-      - $expr: $env.ide14
-      - $default: '1'
-      - $case: 'yam14'
-        service_id: orion
-  ide15:
-    $switch:
-      - $expr: $env.ide15
-      - $default: 99
-      - $case: 'yam15'
-        service_id: orion
-  ide16:
-    $switch:
-      - $expr: $env.ide16
-      - $default: 99.99
-      - $case: 'yam16'
-        service_id: orion
-  ide17:
-    $switch:
-      - $expr: $env.ide17
-      - $default: monkey
-      - $case: 'yam17'
-        service_id: orion
-
 form:
   pipeline:
     parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+      prod-app-name: $env.app_name
     schema:
       $ref: deploy.json
