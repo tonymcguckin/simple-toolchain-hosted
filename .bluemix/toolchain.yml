@@ -3,7 +3,8 @@ messages:
   $i18n: locales.yml
 template:
   name: "'Simple BYOC c/w Dynamic Source Providers (' + $env.app_name + ')'"
-  description: $ref: "#/messages/template.name"
+  description:
+    $ref: "#/messages/template.name"
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
