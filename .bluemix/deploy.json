@@ -3,13 +3,10 @@
     "messages": {
         "$i18n": "locales.yml"
     },
-    "title": "$env.app_name + ' ' + $env.branch",
-    "title2": {
+    "title": {
         "$ref": "#/messages/deploy.title"
     },
-    "description": {
-        "$ref": "#/messages/deploy.description"
-    },
+    "description": "$env.app_name + ' ' + $env.branch",
     "longDescription": {
         "$ref": "#/messages/deploy.longDescription"
     },
