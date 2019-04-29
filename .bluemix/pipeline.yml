@@ -4,7 +4,7 @@ stages:
   inputs:
   - type: git
     branch: master
-    service: $env.app_name + '__' + $env.branch
+    service: ${SAMPLE_REPO}
   triggers:
   - type: commit
   jobs:
@@ -19,7 +19,7 @@ stages:
   - type: stage
   properties:
   - name: CF_APP_NAME
-    value: $env.app_name !== undefined ? $env.name : undefined
+    value: undefined
     type: text
   - name: APP_URL
     value: undefined
