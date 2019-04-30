@@ -2,9 +2,10 @@ version: '2'
 messages:
   $i18n: locales.yml
 template:
-  name: "'Simple BYOC c/w Dynamic Source Providers (' + $env.app_name + ')'"
+  name:
+    $ref: "$env.tname !== undefined ? '#/messages/template.name1' : '#/messages/template.name2'"
   description:
-    $ref: "#/messages/template.name"
+    $ref: "#/messages/template.description"
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
@@ -16,7 +17,7 @@ template:
     git branch: >-
       $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour9](https://github.com/tonymcguckin/dynamicyml/tree/flavour9)"
 toolchain:
-  name: 'Simple BYOC c/w Dynamic Source Providers'
+  name: "'Simple Toolchain Hosted (' + $env.app_name + ')'"
   template:
     getting_started:
       $ref: "#/messages/template.name"
@@ -71,4 +72,4 @@ form:
     parameters:
       prod-app-name: $env.app_name
     schema:
-      $ref: deploy.json
+      $ref: "$env.dtype === undefined ? 'deploy.json' : 'deploy-dtype.json'"
