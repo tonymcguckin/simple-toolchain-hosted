@@ -5,8 +5,8 @@ messages:
 
 template:
   name:
-    $ref: "#/messages/template.name"
-    #$ref: "$env.tname !== undefined ? #/messages/template.name : #/messages/template.name"
+    #$ref: "#/messages/template.name"
+    $ref: "$env.tname !== undefined ? #/messages/template.name : #/messages/template.name"
 
   #description:
     #$ref: "#/messages/template.description"
