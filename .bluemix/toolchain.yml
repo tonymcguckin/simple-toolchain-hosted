@@ -1,9 +1,9 @@
 version: '2'
 messages:
-  #$i18n: locales.yml
+  $i18n: locales.yml
 template:
-  name: foo
-    #$ref: "$env.tname !== undefined ? '#/messages/template.name1' : '#/messages/template.name2'"
+  name:
+    $ref: "$env.tname !== undefined ? '#/messages/template.name1' : '#/messages/template.name2'"
   #description:
     #$ref: "#/messages/template.description"
 toolchain:
