@@ -22,8 +22,7 @@ services:
       - $default: default
         service_id: orion
         parameters:
-          test:
-            $text: "$env.d === undefined ? 'hello' : 'world'"
+          test: test
 
 #form:
 #  pipeline:
