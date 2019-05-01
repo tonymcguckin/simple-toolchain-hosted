@@ -16,36 +16,58 @@ template:
       $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/dynamicyml](https://github.com/tonymcguckin/dynamicyml)"
     git branch: >-
       $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour9](https://github.com/tonymcguckin/dynamicyml/tree/flavour9)"
+
 toolchain:
-  name: "'Simple Toolchain Hosted (' + $env.app_name + ')'"
+
+  name:
+    $ref: "$env.tname !== undefined ? '#/messages/template.name1' : '#/messages/template.name2'"
+    
   template:
     getting_started:
-      $ref: "#/messages/template.name"
+      $ref: "#/messages/template.description"
+
+  config:
+    repo_name: $env.sample-repo.parameters.repo_name
+
 services:
+
   sample-repo:
     $switch:
+    
       - $expr: $env.source_provider
-      - $default: hostedgit
+    
+      - $default: 'hostedgit'
         service_id: hostedgit
         parameters:
-          repo_name: 'BYOC MyApp'
-          repo_url: $env.app_repo || 'http://blah.com/repo'
-          type: $env.type || 'link'
-          has_issues: true
+          
+          repo_name: $env.toolchain.name
+          
+          trace: "$env.form.pipeline.parameters.trace == 9 && $env.trace_on === 'on' ? 'T9' : 'T0'"
+          
+          repo_url: "$env.type === 'link' ? $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'"
+          
+          source_repo_url: "$env.type === 'fork' || $env.type === 'clone' ? $env.app_repo : ''"
+          
+          type: $env.type  || 'clone'
+          
+          has_issues: true    
           enable_traceability: true
-      - $case: 'githubpublic'
-        service_id: githubpublic
+
+      - $case: 'githubconsolidated'
+        service_id: githubconsolidated
         parameters:
-          repo_name: 'BYOC MyApp'
-          repo_url: '{{app_repo}}'
-          type: 'link'
+          repo_name: '{{toolchain.name}}'
+          repo_url: "$env.type === 'link' ? $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'"
+          source_repo_url: "$env.type === 'fork' || $env.type === 'clone' ? $env.app_repo : ''"
+          type: $env.type  || 'clone'
           visibility: public
       - $case: 'github_integrated'
         service_id: github_integrated
         parameters:
-          repo_name: 'BYOC MyApp'
-          repo_url: '{{app_repo}}'
-          type: 'link'
+          repo_name: '{{toolchain.name}}'
+          repo_url: "$env.type === 'link' ? $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'"
+          source_repo_url: "$env.type === 'fork' || $env.type === 'clone' ? $env.app_repo : ''"
+          type: "$env.type !== undefined ? $env.type : 'clone'"
           has_issues: true
           enable_traceability: true
   sample-build:
@@ -71,5 +93,6 @@ form:
   pipeline:
     parameters:
       prod-app-name: $env.app_name
+      trace: 9
     schema:
       $ref: "$env.dtype === undefined ? 'deploy.json' : 'deploy-dtype.json'"
