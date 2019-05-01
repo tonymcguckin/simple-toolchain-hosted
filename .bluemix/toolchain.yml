@@ -1,14 +1,20 @@
 version: '2'
+
 messages:
   $i18n: locales.yml
+
 template:
   name:
-    $ref: "$env.tname !== undefined ? #/messages/template.name : #/messages/template.name"
+    $ref: "#/messages/template.name"
+    #$ref: "$env.tname !== undefined ? #/messages/template.name : #/messages/template.name"
+
   #description:
     #$ref: "#/messages/template.description"
+
 toolchain:
   name: "foo"
-  #template:
+
+#template:
     #getting_started:
     #  $ref: "#/messages/template.description"
 
@@ -24,8 +30,8 @@ services:
         parameters:
           test: test
 
-#form:
-#  pipeline:
-#    parameters: {}
-#    schema:
-#      $ref: "$env.d === undefined ? 'deploy.json' : 'deploy-dtype.json'"
+form:
+  pipeline:
+    parameters: {}
+    schema:
+      $ref: deploy.json
