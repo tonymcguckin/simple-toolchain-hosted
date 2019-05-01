@@ -35,8 +35,3 @@ form:
     parameters: {}
     schema:
       $ref: deploy.json
-
-function: !!js/function >
-  function foobar() {
-    return 'Wow! JS-YAML Rocks!';
-  }
