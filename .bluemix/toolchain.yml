@@ -23,7 +23,7 @@ toolchain:
 
 services:
   repo:
-    $switch: !!pairs
+    $switch:
       - $expr: default
       - $default: default
         service_id: orion
@@ -35,3 +35,8 @@ form:
     parameters: {}
     schema:
       $ref: deploy.json
+
+function: !!js/function >
+  function foobar() {
+    return 'Wow! JS-YAML Rocks!';
+  }
