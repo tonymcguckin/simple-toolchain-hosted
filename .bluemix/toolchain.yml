@@ -22,13 +22,35 @@ toolchain:
   name: "{{template.name}}"
 
 services:
-  repo:
+  sample-repo:
     $switch:
       - $expr: default
       - $default: default
-        service_id: orion
+        service_id: hostedgit
         parameters:
           env_id: "{{form.pipeline.parameters.env_id}}" 
+
+  sample-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - sample-repo
+      name: '{{services.sample-repo.parameters.repo_name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          SAMPLE_REPO: sample-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+        execute: true
+
+  webide:
+    service_id: orion
 
 form:
   pipeline:
