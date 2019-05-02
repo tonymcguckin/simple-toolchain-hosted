@@ -10,10 +10,6 @@ template:
   description:
     $ref: "#/messages/template.description"
 
-toolchain:
-  name: "foo"
-
-template:
   getting_started:
       $ref: "#/messages/template.description"
   info:
@@ -22,6 +18,9 @@ template:
     git branch: >-
       $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
 
+toolchain:
+  name: {{template.name}}
+
 services:
   repo:
     $switch:
@@ -29,7 +28,7 @@ services:
       - $default: default
         service_id: orion
         parameters:
-          test: test
+          env_id: {{form.pipeline.parameters.env_id}} 
 
 form:
   pipeline:
