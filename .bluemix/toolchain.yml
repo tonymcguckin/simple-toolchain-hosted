@@ -41,11 +41,11 @@ services:
         content:
           $text: pipeline.yml
         env:
-          SAMPLE_REPO: sample-repo
-          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
-          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
-          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          SAMPLE_REPO: $env.byoc_name
+          CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
           API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
 
