@@ -29,12 +29,12 @@ services:
         service_id: hostedgit
         parameters:
           env_id: "{{form.pipeline.parameters.env_id}}"
-          bucket1: "{{form.pipeline.parameters}}" 
-          bucket2: "{{form.pipeline.schema}}" 
-          bucket3: "{{form.pipeline}}"
-          bucket4: "{{form}}"
-          bucket5: "{{template.name}}"
-          bucket6: "{{template}}"
+          #bucket1: "{{form.pipeline.parameters}}" 
+          #bucket2: "{{form.pipeline.schema}}" 
+          #bucket3: "{{form.pipeline}}"
+          #bucket4: "{{form}}"
+          #bucket5: "{{template.name}}"
+          #bucket6: "{{template}}"
 
   sample-build:
     service_id: pipeline
