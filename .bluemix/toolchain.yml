@@ -5,7 +5,7 @@ messages:
 
 template:
   name:
-    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' :&&& '#/messages/template.byoc_name'"
+    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
 
   description:
     $ref: "#/messages/template.description"
@@ -48,6 +48,8 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: $env.byoc_name
+          SAMPLE_REPO1: $env.byoc_name
+          SAMPLE_REPO2: "if($env.env_id === 'eu'){ $env.assign('sample-build-eu.dyml'); } else { '' }"
           CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
@@ -62,5 +64,6 @@ form:
   pipeline:
     parameters:
       env_id: "'ENV_ID:' + $env.env_id"
+      env_key: $env.env_key
     schema:
       $ref: deploy.json
