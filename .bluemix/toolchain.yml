@@ -7,11 +7,11 @@ messages:
 #  name:
 #    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
 
-  description:
-    $ref: "#/messages/template.description"
+#  description:
+#    $ref: "#/messages/template.description"
 
-  getting_started:
-      $ref: "#/messages/template.description"
+#  getting_started:
+#      $ref: "#/messages/template.description"
 #  info:
 #    git url: >-
 #      $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
@@ -59,13 +59,13 @@ services:
           #API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
 
-  webide:
-    service_id: orion
+#  webide:
+#    service_id: orion
 
-form:
-  pipeline:
-    parameters: {}
+#form:
+#  pipeline:
+#    parameters: {}
       #env_id: "'ENV_ID:' + $env.env_id"
       #env_key: $env.env_key
-    schema: {}
+#    schema: {}
       #$ref: deploy.json
