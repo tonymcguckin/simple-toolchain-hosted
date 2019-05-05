@@ -5,7 +5,7 @@ messages:
 
 template:
   name:
-    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : && '#/messages/template.byoc_name'"
+    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
 
   description:
     $ref: "#/messages/template.description"
@@ -19,7 +19,7 @@ template:
       $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
 
 toolchain:
-  name: "{{template.name}}"
+  name: $$env.template.name
 
 services:
   sample-repo:
