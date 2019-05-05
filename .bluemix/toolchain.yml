@@ -30,7 +30,8 @@ services:
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
           env_id2: "{ 'a': $env.branch, 'b': $env.app_name }"
-          env_id3: "[ $env.branch, $env.app_name ]"
+          env_id3: "{ $env.branch, $env.app_name }"
+          env_id4: "[ $env.branch, $env.app_name ]"
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
           #bucket3: "{{form.pipeline}}"
