@@ -33,7 +33,7 @@ services:
           env_id3: "if($env.byoc_name == 'foobar') $env.branch; else '{{repository}}';"
           env_id4: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
           env_id5: "[ $env.branch, $env.app_name ]"
-          env_id6: "$$env.createObject(\"foo\")"
+          env_id6: "$env.createObject(\"foo\")"
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
           #bucket3: "{{form.pipeline}}"
@@ -53,7 +53,7 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: $env.byoc_name
-          #SAMPLE_REPO1: $env.byoc_name
+          SAMPLE_REPO1: $$env.byoc_name
           #SAMPLE_REPO2: "if($env.env_id === 'eu'){ $env.assign('sample-build-eu.dyml'); } else { '' }"
           #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
