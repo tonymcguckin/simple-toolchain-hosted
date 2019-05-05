@@ -34,6 +34,8 @@ services:
           env_id4: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
           env_id5: "[ $env.branch, $env.app_name ]"
           env_id6: "$env.createObject(\"foo\")"
+          env_id7: "$env.createObject({ a: $env.byoc_name })"
+          env_id8: "$$env.createObject({ b: $env.byoc_name })"
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
           #bucket3: "{{form.pipeline}}"
