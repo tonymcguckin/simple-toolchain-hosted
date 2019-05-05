@@ -29,13 +29,17 @@ services:
         service_id: hostedgit
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
+  
           env_id2: "[{ a: $env.branch, b: $env.app_name }]"
-          env_id3: "if($env.byoc_name == 'foobar') $env.branch; else '{{repository}}';"
-          env_id4: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
-          env_id5: "[ $env.branch, $env.app_name ]"
-          env_id6: "$env.createObject(\"foo\")"
-          env_id7: "$env.createObject({ a: $env.byoc_name })"
-          env_id8: "$$env.createObject({ b: $env.byoc_name })"
+          env_id3: "[ $env.branch, $env.app_name ]"
+          
+          env_id4: "$env.returnObject(999.997766)"
+          env_id5: "$env.returnObject({ a: $env.byoc_name })"
+          env_id6: "$$env.returnObject({ b: $env.byoc_name })"
+          
+          env_id7: "if($env.byoc_name == 'foobar') $env.branch; else '{{repository}}';"
+          env_id8: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+        
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
           #bucket3: "{{form.pipeline}}"
