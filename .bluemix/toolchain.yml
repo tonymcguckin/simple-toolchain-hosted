@@ -29,11 +29,10 @@ services:
         service_id: hostedgit
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
-          env_id2: "{ 'a': $env.branch, 'b': $env.app_name }"
-          env_id3: "\"{ 'a': $env.branch, 'b': $env.app_name }\""
+          env_id2: "{ a: $env.branch, b: $env.app_name }"
+          env_id3: "\"{ a: $env.branch, b: $env.app_name }\""
           env_id4: "if($env.byoc_name == 'foobar') $env.branch; else '{{repository}}';"
           env_id5: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
-          #env_id2: "JSON.parse(\"{ a: $env.branch, b: $env.app_name }\")"
           env_id6: "[ $env.branch, $env.app_name ]"
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
