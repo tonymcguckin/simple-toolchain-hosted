@@ -38,8 +38,8 @@ services:
           env_id6: "$env.createObject({ a: $env.byoc_name })"
           env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
-          env_id8: "$env.include('params.dyml')"
-          env_id9: "$$env.include('params.dyml')"
+          env_id8: "$env.load('params.dyml')"
+          env_id9: "$$env.load('params.dyml')"
           
           SAMPLE_REPO1: $env.byoc_name
           SAMPLE_REPO2: $$env.byoc_name
