@@ -30,15 +30,16 @@ services:
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
   
-          env_id2: "[{ a: $env.branch, b: $env.app_name }]"
+          env_id2: "{ a: $env.branch, b: $env.app_name }"
           env_id3: "[ $env.branch, $env.app_name ]"
           
-          env_id4: "$env.return_object(999.997766)"
-          env_id5: "$env.return_object({ a: $env.byoc_name })"
-          env_id6: "$$env.return_object({ x: $$env.byoc_name, y: true })"
+          env_id4: "$env.createObject(999.997766)"
+          env_id4: "$env.createObject(true, 'mykey')"
+          env_id5: "$env.createObject({ a: $env.byoc_name })"
+          env_id6: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
-          env_id7: "$env.load_dymlx('params.dymlx')"
-          env_id8: "$$env.load_dymlx('params.dymlx')"
+          env_id7: "$env.include('params.dyml')"
+          env_id8: "$$env.include('params.dyml')"
           
           SAMPLE_REPO1: $env.byoc_name
           SAMPLE_REPO2: $$env.byoc_name
