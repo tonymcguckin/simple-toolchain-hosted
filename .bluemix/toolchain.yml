@@ -35,28 +35,28 @@ services:
       - $case: hostedgit
         service_id: hostedgit
         parameters:
-  #        env_id: "{{form.pipeline.parameters.env_id}}"
+  #        t1: "{{form.pipeline.parameters.env_id}}"
   
-          env_id2: "{ a: $env.branch, b: $env.app_name }"
-          env_id3: "[ $env.branch, $env.app_name ]"
+          t2: "{ a: $env.branch, b: $env.app_name }"
+          t3: "[ $env.branch, $env.app_name ]"
           
-          env_id4: "$env.createObject(999.997766)"
-          env_id5: "$env.createObject(true, 'mykey')"
-          env_id6: "$env.createObject({ a: $env.byoc_name })"
-          env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
+          t4: "$env.createObject(999.997766)"
+          t5: "$env.createObject(true, 'mykey')"
+          t6: "$env.createObject({ a: $env.byoc_name })"
+          t7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
-          p1: "$env.load('params.dyml')"
-          #p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.p0')"
-          p3: "$env.load('params.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
-          p3: "$env.load('params.dyml', 'form.pipeline.parameters.env')"
+          t8: "$env.load('params.dyml')"
+          #t9: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.p0')"
+          t10: "$env.load('params.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+          t11: "$env.load('params.dyml', 'form.pipeline.parameters.env')"
           
-          SAMPLE_REPO1: $env.byoc_name
-          SAMPLE_REPO2: $$env.byoc_name
-          SAMPLE_REPO3: $env.byoc_name || 55.44
-          SAMPLE_REPO4: $$env.byoc_name || 66.77
+          t12: $env.byoc_name
+          t13: $$env.byoc_name
+          t14: $env.byoc_name || 55.44
+          t15: $$env.byoc_name || 66.77
           
-          env_id10: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
-          env_id11: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+          t16: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
+          t17: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
         
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
@@ -79,20 +79,19 @@ services:
           SAMPLE_REPO: $env.byoc_name
           SAMPLE_REPO1: $$env.byoc_name
           SAMPLE_REPO2: "if($env.env === 'eu'){ $env.load('build-eu.dyml'); } else { 'non_eu_env' }"
-          #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
-          #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
-          #PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
-          #PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
-          #API_KEY: '{{form.pipeline.parameters.api-key}}'
+          CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
 
-#  webide:
-#    service_id: orion
+  webide:
+    service_id: orion
 
 form:
   pipeline:
-    parameters: {}
-      #env_id: "'ENV_ID:' + $env.env_id"
-      #env_key: $env.env_key
-    schema: {}
-      #$ref: deploy.json
+    parameters:
+      env_key: "if($env.env_key !== undefined){ 'eu' } else { 'usa' }"
+    schema:
+      $ref: deploy.json
