@@ -46,7 +46,7 @@ services:
           env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
           p1: "$env.load('params.dyml')"
-          p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.foo')"
+          #p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.foo')"
           p3: "$env.load('params.dyml', 'services.sample-build.parameters.schedule')"
           
           SAMPLE_REPO1: $env.byoc_name
