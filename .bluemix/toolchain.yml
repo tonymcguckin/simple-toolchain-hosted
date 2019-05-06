@@ -45,8 +45,8 @@ services:
           SAMPLE_REPO3: $env.byoc_name || 55.44
           SAMPLE_REPO4: $$env.byoc_name || 66.77
           
-          env_id9: "if($env.byoc_name == 'foobar') $env.branch; else '{{repository}}';"
-          env_id10: "if($env.byoc_name == 'foobar'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+          env_id9: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
+          env_id10: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
         
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
