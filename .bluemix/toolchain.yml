@@ -24,8 +24,9 @@ toolchain:
 services:
   sample-repo:
     $switch:
-      - $expr: default
-      - $default: default
+      - $expr: hostedgit
+      - $default: hostedgit
+      - $case: hostedgit
         service_id: hostedgit
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
