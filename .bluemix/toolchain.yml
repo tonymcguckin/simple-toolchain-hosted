@@ -28,9 +28,9 @@ services:
       
       - $default: hostedgit
       
-      - $case: githubpublic
-        service_id: githubpublic
-        parameters: {}
+      #- $case: githubpublic
+      #  service_id: githubpublic
+      #  parameters: {}
         
       - $case: hostedgit
         service_id: hostedgit
