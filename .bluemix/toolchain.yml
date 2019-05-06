@@ -37,24 +37,25 @@ services:
         parameters:
   #        env_id: "{{form.pipeline.parameters.env_id}}"
   
-          #env_id2: "{ a: $env.branch, b: $env.app_name }"
-          #env_id3: "[ $env.branch, $env.app_name ]"
+          env_id2: "{ a: $env.branch, b: $env.app_name }"
+          env_id3: "[ $env.branch, $env.app_name ]"
           
-          #env_id4: "$env.createObject(999.997766)"
-          #env_id5: "$env.createObject(true, 'mykey')"
-          #env_id6: "$env.createObject({ a: $env.byoc_name })"
-          #env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
+          env_id4: "$env.createObject(999.997766)"
+          env_id5: "$env.createObject(true, 'mykey')"
+          env_id6: "$env.createObject({ a: $env.byoc_name })"
+          env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
-          test: "$env.load('params.dyml')"
-          #env_id9: "$$env.load('params.dyml')"
+          p1: "$env.load('params.dyml')"
+          #p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.foo'"
+          p3: "$env.load('params.dyml', 'services.sample-build.parameters.schedule'"
           
-          #SAMPLE_REPO1: $env.byoc_name
-          #SAMPLE_REPO2: $$env.byoc_name
-          #SAMPLE_REPO3: $env.byoc_name || 55.44
-          #SAMPLE_REPO4: $$env.byoc_name || 66.77
+          SAMPLE_REPO1: $env.byoc_name
+          SAMPLE_REPO2: $$env.byoc_name
+          SAMPLE_REPO3: $env.byoc_name || 55.44
+          SAMPLE_REPO4: $$env.byoc_name || 66.77
           
-          #env_id10: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
-          #env_id11: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+          env_id10: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
+          env_id11: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
         
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
@@ -76,7 +77,7 @@ services:
         env:
           SAMPLE_REPO: $env.byoc_name
           SAMPLE_REPO1: $$env.byoc_name
-          #SAMPLE_REPO2: "if($env.env_id === 'eu'){ $env.assign('sample-build-eu.dyml'); } else { '' }"
+          SAMPLE_REPO2: "if($env.env === 'eu'){ $env.load('sample-build-eu.dyml'); } else { 'non_eu_env' }"
           #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           #PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
