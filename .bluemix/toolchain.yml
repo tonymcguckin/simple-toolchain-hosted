@@ -34,20 +34,20 @@ services:
           env_id3: "[ $env.branch, $env.app_name ]"
           
           env_id4: "$env.createObject(999.997766)"
-          env_id4: "$env.createObject(true, 'mykey')"
-          env_id5: "$env.createObject({ a: $env.byoc_name })"
-          env_id6: "$$env.createObject({ x: $$env.byoc_name, y: true })"
+          env_id5: "$env.createObject(true, 'mykey')"
+          env_id6: "$env.createObject({ a: $env.byoc_name })"
+          env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
-          env_id7: "$env.include('params.dyml')"
-          env_id8: "$$env.include('params.dyml')"
+          env_id8: "$env.include('params.dyml')"
+          env_id9: "$$env.include('params.dyml')"
           
           SAMPLE_REPO1: $env.byoc_name
           SAMPLE_REPO2: $$env.byoc_name
           SAMPLE_REPO3: $env.byoc_name || 55.44
           SAMPLE_REPO4: $$env.byoc_name || 66.77
           
-          env_id9: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
-          env_id10: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+          env_id10: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
+          env_id11: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
         
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
