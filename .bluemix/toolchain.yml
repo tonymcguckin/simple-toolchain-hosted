@@ -46,8 +46,9 @@ services:
           env_id7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
           p1: "$env.load('params.dyml')"
-          #p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.foo')"
-          p3: "$env.load('params.dyml', 'services.sample-build.parameters.schedule')"
+          #p2: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.p0')"
+          p3: "$env.load('params.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+          p3: "$env.load('params.dyml', 'form.pipeline.parameters.env')"
           
           SAMPLE_REPO1: $env.byoc_name
           SAMPLE_REPO2: $$env.byoc_name
@@ -77,7 +78,7 @@ services:
         env:
           SAMPLE_REPO: $env.byoc_name
           SAMPLE_REPO1: $$env.byoc_name
-          SAMPLE_REPO2: "if($env.env === 'eu'){ $env.load('sample-build-eu.dyml'); } else { 'non_eu_env' }"
+          SAMPLE_REPO2: "if($env.env === 'eu'){ $env.load('build-eu.dyml'); } else { 'non_eu_env' }"
           #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           #PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
