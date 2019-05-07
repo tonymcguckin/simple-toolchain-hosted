@@ -1,0 +1,2 @@
+BUILD_ZONE: $env.env_id
+USA_TARGET: "FFC636"
