@@ -1,21 +1,25 @@
 version: '2'
+
 messages:
   $i18n: locales.yml
+
 template:
   name:
-    $ref: "#/messages/template.name"
+    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.name.byoc'"
+
   description:
-    $ref: "#/messages/template.description"
+    $ref: "if($env.source_provider == 'githubconsolidated'){ '#/messages/template.desc.githubconsolidated'; } else { '#/messages/template.desc.hostedgit' }"
+    
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
     - sample-build
     - sample-repo
+
   info:
-    git url: >-
-      [https://github.com/open-toolchain/simple-toolchain-hosted](https://github.com/open-toolchain/simple-toolchain-hosted)
-    git branch: >-
-      [master](https://github.com/open-toolchain/simple-toolchain-hosted/tree/master)
+    git url: "'[' + $env.repository + '](' + $env.repository + ')'"
+    git branch: "'[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')'"
+
 toolchain:
   name: 'simple-toolchain-{{timestamp}}'
   template:
