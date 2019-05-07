@@ -12,11 +12,11 @@ template:
 
   getting_started:
       $ref: "#/messages/template.description"
-#  info:
-#    git url: >-
-#      $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
-#    git branch: >-
-#      $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
+  info:
+    git url: >-
+      $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
+    git branch: >-
+      $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
 
 toolchain:
   name: $$env.byoc_name
@@ -26,16 +26,15 @@ services:
     $switch:
       - $expr: hostedgit
       
-      #- $default: hostedgit
+      - $default: hostedgit
       
-      #- $case: githubpublic
-      #  service_id: githubpublic
-      #  parameters: {}
+      - $case: githubpublic
+        service_id: githubpublic
+        parameters: {}
         
       - $case: hostedgit
         service_id: hostedgit
         parameters:
-  #        t1: "{{form.pipeline.parameters.env_id}}"
   
           t2: "{ a: $env.branch, b: $env.app_name }"
           t3: "[ $env.branch, $env.app_name ]"
@@ -46,17 +45,11 @@ services:
           t7: "$$env.createObject({ x: $$env.byoc_name, y: true })"
           
           t8: "$env.load('params.dyml')"
-          #t9: "$env.load('params.dyml', 'services.sample-repo.$switch.1.parameters.p0')"
-          t10: "$env.load('params.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
-          t11: "$env.load('params.dyml', 'form.pipeline.parameters.env')"
+          t10: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+          t11: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
           
-          t12: $env.byoc_name
-          t13: $$env.byoc_name
-          t14: $env.byoc_name || 55.44
-          t15: $$env.byoc_name || 66.77
-          
-          t16: "if($env.byoc_name == 'foobar1') $env.branch; else '{{repository}}';"
-          t17: "if($env.byoc_name == 'foobar2'){ $env.branch; } else if($env.byoc_name == 'hello'){ 999; };"
+          t16: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
+          t17: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
         
           #bucket1: "{{form.pipeline.parameters}}" 
           #bucket2: "{{form.pipeline.schema}}" 
@@ -77,8 +70,7 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: $env.byoc_name
-          SAMPLE_REPO1: $$env.byoc_name
-          SAMPLE_REPO2: "if($env.env === 'eu'){ $env.load('build-eu.dyml'); } else { 'non_eu_env' }"
+          ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
           CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
@@ -92,6 +84,6 @@ services:
 form:
   pipeline:
     parameters:
-      env_key: "if($env.env_key !== undefined){ 'eu' } else { 'usa' }"
+      env_key: "if($env.env !== undefined){ $env.env } else { 'na' }"
     schema:
       $ref: deploy.json
