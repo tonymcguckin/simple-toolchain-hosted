@@ -37,16 +37,16 @@ services:
         parameters:
           
           t1: "$env.createObject(999.997766)"
-          t2: "$env.createObject(true, 'mykey')"
-          t3: "$env.createObject({ a: $env.byoc_name })"
-          t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
+          #t2: "$env.createObject(true, 'mykey')"
+          #t3: "$env.createObject({ a: $env.byoc_name })"
+          #t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
           
-          t5: "$env.load('params.dyml')"
-          t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
-          t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
+          #t5: "$env.load('params.dyml')"
+          #t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+          #t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
           
-          t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
-          t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
+          #t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
+          #t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
 
   sample-build:
     service_id: pipeline
@@ -60,7 +60,7 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: $env.byoc_name
-          ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
+          #ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
           CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
