@@ -6,7 +6,7 @@
     "title": {
         "$ref": "#/messages/deploy.title"
     },
-    "description": "$env.app_name + ' ' + $env.branch",
+    "description": "DYML Simple Toolchain Hosted",
     "longDescription": {
         "$ref": "#/messages/deploy.longDescription"
     },
