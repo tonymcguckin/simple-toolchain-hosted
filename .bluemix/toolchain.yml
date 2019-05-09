@@ -5,21 +5,22 @@ messages:
 
 template:
   name:
-    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
+    $ref: "#/messages/template.name"
+    #$ref: "#/messages/template.description"$ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
 
   description:
     $ref: "#/messages/template.description"
 
   getting_started:
       $ref: "#/messages/template.description"
-  info:
-    git url: >-
-      $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
-    git branch: >-
-      $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
+  #info:
+   # git url: >-
+    #  $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
+    #git branch: >-
+     # $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
 
 toolchain:
-  name: $$env.byoc_name
+  name: DYML
 
 services:
   sample-repo:
@@ -53,19 +54,19 @@ services:
     parameters:
       services:
         - sample-repo
-      name: '{{services.sample-repo.parameters.repo_name}}'
+      name: SAMPLE-BUILD
       ui-pipeline: true
       configuration:
         content:
           $text: pipeline.yml
         env:
-          SAMPLE_REPO: $env.byoc_name
+          SAMPLE_REPO: sample-repo
           #ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
-          CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
-          PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
-          PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
-          PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
+          #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
+          #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
+          #PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
+          #PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
+          #API_KEY: '{{form.pipeline.parameters.api-key}}'
         execute: true
 
   webide:
@@ -73,7 +74,7 @@ services:
 
 form:
   pipeline:
-    parameters:
-      env_key: "if($env.env !== undefined){ $env.env } else { 'na' }"
+    parameters: {}
+      #env_key: "if($env.env !== undefined){ $env.env } else { 'na' }"
     schema:
       $ref: deploy.json
