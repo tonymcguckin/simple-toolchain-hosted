@@ -41,7 +41,7 @@ services:
           #t3: "$env.createObject({ a: $env.byoc_name })"
           #t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
           
-          #t5: "$env.load('params.dyml')"
+          t5: "$env.load('params.dyml')"
           #t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
           #t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
           
