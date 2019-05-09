@@ -61,7 +61,7 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          #ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
+          ZONE: "if($env.env == 'eu'){ $env.load('build-eu.dyml'); } else if($env.env == 'us'){ $env.load('build-usa.dyml'); } else { 'na' }"
           #CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
           #PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
           #PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
