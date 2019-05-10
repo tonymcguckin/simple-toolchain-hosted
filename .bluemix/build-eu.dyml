@@ -1,2 +1,19 @@
-BUILD_ZONE: $env.env_id
-EU_TARGET: "UEJ888"
+build:
+  service_id: pipeline
+  parameters:
+    services:
+      - repo
+    name: 'Pipeline 1'
+    ui-pipeline: true
+    configuration:
+      content:
+        $text: pipeline.yml
+      env:
+        REPO: repo
+        USERNAME: '{{form.pipeline.parameters.username}}'
+        PASSWORD: '{{form.pipeline.parameters.password}}'
+        API_KEY: '{{form.pipeline.parameters.api-key}}'
+        SPACE: '{{form.pipeline.parameters.space}}'
+        ORG: '{{form.pipeline.parameters.organization}}'
+        REGION: '{{form.pipeline.parameters.region}}'
+      execute: true
