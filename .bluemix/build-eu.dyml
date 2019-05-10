@@ -1,9 +1,9 @@
-build:
+build2:
   service_id: pipeline
   parameters:
     services:
       - repo
-    name: 'Pipeline 1'
+    name: 'Pipeline 2'
     ui-pipeline: true
     configuration:
       content:
