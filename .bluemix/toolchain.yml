@@ -49,24 +49,24 @@ services:
           #t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
           #t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
 
-  sample-build:
-    service_id: pipeline
-    parameters:
-      services:
-        - sample-repo
-      name: SAMPLE-BUILD
-      ui-pipeline: true
-      configuration:
-        content:
-          $text: pipeline.yml
-        env:
-          SAMPLE_REPO: sample-repo
-          CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
-          PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
-          PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
-          PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
-        execute: true
+ # sample-build:
+ #   service_id: pipeline
+ #   parameters:
+ #     services:
+ #       - sample-repo
+ #     name: SAMPLE-BUILD
+ #     ui-pipeline: true
+ #     configuration:
+ #       content:
+ #         $text: pipeline.yml
+ #       env:
+ #         SAMPLE_REPO: sample-repo
+ #         CF_APP_NAME: $env.byoc_name || '{{form.pipeline.parameters.prod-app-name}}'
+ #         PROD_SPACE_NAME: $env.prod_space || '{{form.pipeline.parameters.prod-space}}'
+ #         PROD_ORG_NAME: $env.prod_org || '{{form.pipeline.parameters.prod-organization}}'
+ #         PROD_REGION_ID: $env.prod_region || '{{form.pipeline.parameters.prod-region}}'
+ #         API_KEY: '{{form.pipeline.parameters.api-key}}'
+ #       execute: true
 
   webide:
     service_id: orion
