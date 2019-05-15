@@ -5,8 +5,9 @@ messages:
 
 template:
   name:
-    $ref: "#/messages/template.name"
-    #$ref: "#/messages/template.description"$ref: "$env.byoc_name === undefined ? '#/messages/template.name' : '#/messages/template.byoc_name'"
+    #$ref: "#/messages/template.name"
+    #$ref: "#/messages/template.description"
+    $ref: "$env.byoc_name === undefined ? '#/messages/template.name' ::: '#/messages/template.byoc_name'"
 
   description:
     $ref: "#/messages/template.description"
