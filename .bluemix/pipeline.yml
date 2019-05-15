@@ -36,7 +36,8 @@ stages:
     script: |
       #!/bin/bash
       # Push app
-      if ! cf app $CF_APP; then  
+      # LIST=$( bx cr images --restrict ${REGISTRY_NAMESPACE}/${IMAGE_NAME} --no-trunc --format '{{ .Created }} {{ .Repository }}@{{ .Digest }}' | sort -r -u | awk '{print $2}' | sed '$ d' )
+      LIST=$( bx cr images --restrict ${REGISTRY_NAMESPACE}/${IMAGE_NAME} --no-trunc --format '{{ .Created }} {{ .Repository }}@{{ .Digest }}' | sort -r -u | awk '{print $2}' | sed '$ d' )if ! cf app $CF_APP; then  
         cf push $CF_APP
       else
         OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
