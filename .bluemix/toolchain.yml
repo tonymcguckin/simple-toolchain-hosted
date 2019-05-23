@@ -5,8 +5,6 @@ messages:
 
 template:
   name:
-    #$ref: "#/messages/template.name"
-    #$ref: "#/messages/template.description"
     $ref: "$env.byoc_name === undefined ? '#/messages/template.name' ::: '#/messages/template.byoc_name'"
 
   description:
@@ -14,11 +12,14 @@ template:
 
   getting_started:
       $ref: "#/messages/template.description"
-  #info:
-   # git url: >-
-    #  $env.repository ? '[' + $env.repository + '](' + $env.repository + ')' : "[https://github.com/tonymcguckin/simple-toolchain-hosted](https://github.com/tonymcguckin/simple-toolchain-hosted)"
-    #git branch: >-
-     # $env.repository && $env.branch ? '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')': "[flavour3](https://github.com/tonymcguckin/simple-toolchain-hosted/tree/flavour3)"
+
+  info:
+    git url: >
+        '[' + $env.repository + '](' + $env.repository + ')'
+    git branch: >
+        $env.branch ?
+          '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
+          '[master]('+ $env.repository + '/tree/master)'
 
 toolchain:
   name: DYML
@@ -30,17 +31,17 @@ services:
         service_id: hostedgit
         parameters:
           
-          t1: "'use strict'; $env.createObject(999.997766)"
+          t1: "$env.createObject(999.997766)"
           t2: "$env.createObject(true, 'mykey')"
           t3: "$env.createObject({ a: $env.byoc_name })"
           t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
           
           t5: "$env.load('params.dyml')"
-          #t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+          t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
           t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
           
-          #t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
-          #t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
+          t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
+          t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
 
 form:
   pipeline:
@@ -53,6 +54,6 @@ form:
         } else {
           'na'
         }
-      #env_key: "if($env.env !== undefined){ $env.env } else { 'na' }"
+      env_key: "if($env.env !== undefined){ $env.env } else { 'na' }"
     schema:
       $ref: deploy.json
