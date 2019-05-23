@@ -22,7 +22,7 @@ template:
           '[master]('+ $env.repository + '/tree/master)'
 
 toolchain:
-  name: DYML
+  name: "DYML - $env Scripting: API Extensions"
 
 services:
   sample-repo:
