@@ -32,7 +32,7 @@ services:
         parameters:
           test: foo
           
-          #t1: "$env.createObject(999.997766)"
+          t1: "$env.createObject(999.997766)"
           #t2: "$env.createObject(true, 'mykey')"
           #t3: "$env.createObject({ a: $env.byoc_name })"
           #t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
