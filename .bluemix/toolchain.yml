@@ -91,7 +91,7 @@ services:
       services:
         - sample-repo
       name: '{{services.sample-repo.parameters.repo_name}}'
-      ui-pipeline: true
+      ui_pipeline: true
       configuration:
         content:
           $text: pipeline.yml
