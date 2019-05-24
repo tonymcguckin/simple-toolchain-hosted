@@ -38,6 +38,10 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
+
+  foo_service:
+    service_id: null
+
   sample-repo:
     $switch:
       - $expr: $env.source_provider
@@ -101,7 +105,7 @@ services:
         execute: true
   webide:
     service_id: orion
-  foo_service: null
+    
 form:
   pipeline:
     parameters:
