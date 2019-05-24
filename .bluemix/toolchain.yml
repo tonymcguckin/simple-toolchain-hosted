@@ -42,12 +42,12 @@ services:
   a_service:
     service_id: ""
 
-  b_service: {}
+  #b_service: {}
 
   c_service: null
 
-  d_service:
-    service_id: undefined
+  #d_service:
+  #  service_id: undefined
 
   sample-repo:
     $switch:
