@@ -40,7 +40,7 @@ toolchain:
 services:
 
   foo_service:
-    service_id: null
+    service_id: undefined
 
   sample-repo:
     $switch:
