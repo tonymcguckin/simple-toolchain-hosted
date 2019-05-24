@@ -101,7 +101,7 @@ services:
         execute: true
   webide:
     service_id: orion
-  foo_service: {}
+  foo_service: null
 form:
   pipeline:
     parameters:
