@@ -117,11 +117,11 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
-          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
-          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
-          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
-          API_KEY: '{{form.pipeline.parameters.api-key}}'
+          CF_APP_NAME: $env.form.pipeline.parameters["prod-app-name"]
+          PROD_SPACE_NAME: $env.form.pipeline.parameters["prod-space"]
+          PROD_ORG_NAME: $env.form.pipeline.parameters["prod-organization"]
+          PROD_REGION_ID: $env.form.pipeline.parameters["prod-region"]
+          API_KEY: $env.form.pipeline.parameters["api-key"]
         execute: true
 
   webide:
