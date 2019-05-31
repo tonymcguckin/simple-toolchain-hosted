@@ -39,11 +39,11 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
 
-  a:
+  pr_build:
     $switch:
       - $expr: $env.a
       - $case: true
-        service_id: hostedgit
+        service_id: pr_build
         parameters:
           p1: hello world
 
@@ -90,6 +90,7 @@ services:
               $env.type : 'clone'
           has_issues: true
           enable_traceability: true
+
   sample-build:
     service_id: pipeline
     parameters:
@@ -117,7 +118,7 @@ form:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
     schema:
       $ref: deploy.json
-  b:
+  pr_build:
     $switch:
       - $expr: $env.b
       - $case: true
