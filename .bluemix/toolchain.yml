@@ -34,7 +34,9 @@ template:
           '[master]('+ $env.repository + '/tree/master)'
 
 toolchain:
-  name: 'simple-toolchain-{{timestamp}}'
+  #name: 'simple-toolchain-{{timestamp}}'
+  name: 'tmg-simple-toolchain-hosted-1'
+
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
@@ -82,7 +84,7 @@ services:
       - $default: 'hostedgit'
         service_id: hostedgit
         parameters:
-          repo_name: '{{toolchain.name}}'
+          repo_name: $env.toolchain.name
           repo_url: >
             $env.type === 'link' ? 
               $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
@@ -95,7 +97,7 @@ services:
       - $case: 'githubconsolidated'
         service_id: githubconsolidated
         parameters:
-          repo_name: '{{toolchain.name}}'
+          repo_name: $env.toolchain.name
           repo_url: >
             $env.type === 'link' ? 
               $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
@@ -107,7 +109,7 @@ services:
       - $case: 'github_integrated'
         service_id: github_integrated
         parameters:
-          repo_name: '{{toolchain.name}}'
+          repo_name: $env.toolchain.name
           repo_url: >
             $env.type === 'link' ? 
               $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
