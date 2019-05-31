@@ -51,14 +51,14 @@ services:
           ui_pipeline: true
           configuration:
             content:
-              $text: pipeline.yml
+              $text: pr_pipeline.yml
             env:
               SAMPLE_REPO: sample-repo
-              CF_APP_NAME: $env.form.pipeline.parameters["prod-app-name"]
-              PROD_SPACE_NAME: $env.form.pipeline.parameters["prod-space"]
-              PROD_ORG_NAME: $env.form.pipeline.parameters["prod-organization"]
-              PROD_REGION_ID: $env.form.pipeline.parameters["prod-region"]
-              API_KEY: $env.form.pipeline.parameters["api-key"]
+              CF_APP_NAME: $env.form.pr_pipeline.parameters["pr-app-name"]
+              PROD_SPACE_NAME: $env.form.pr_pipeline.parameters["pr-space"]
+              PROD_ORG_NAME: $env.form.pr_pipeline.parameters["pr-organization"]
+              PROD_REGION_ID: $env.form.pr_pipeline.parameters["pr-region"]
+              API_KEY: $env.form.pr_pipeline.parameters["pr-api-key"]
             execute: true
 
   sample-repo:
@@ -110,7 +110,7 @@ services:
     parameters:
       services:
         - sample-repo
-      name: '{{services.sample-repo.parameters.repo_name}}'
+      name: $env.services["sample-repo"].parameters.repo_name
       ui_pipeline: true
       configuration:
         content:
@@ -128,17 +128,27 @@ services:
     service_id: orion
     
 form:
+
   pipeline:
     parameters:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
+      prod-space: sth-space
+      prod-organisation: acme-org
+      prod-region: us-nyc
+      api-key: 88ea4fe9a1
     schema:
       $ref: deploy.json
+
   pr_pipeline:
     $switch:
       - $expr: $env.enablePrPipeline
       - $case: true
         service_id: pipeline
         parameters:
-          b-app-name: $env.services["sample-repo"].parameters.repo_name
+          pr-app-name: $env.services["sample-repo"].parameters.repo_name
+          pr-space: sth-space
+          pr-organisation: acme-org
+          pr-region: eu-ire
+          pr-api-key: ab87cc22eef8
         schema:
-          $ref: deploy.json
+          $ref: pr_deploy.json
