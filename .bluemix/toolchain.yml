@@ -39,11 +39,13 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
 
-  foo:
+  a:
     $switch:
-      - $expr: $env.x
+      - $expr: $env.a
       - $case: true
-        bar: hello world
+        service_id: hostedgit
+        parameters:
+          p1: hello world
 
   sample-repo:
     $switch:
@@ -112,6 +114,14 @@ services:
 form:
   pipeline:
     parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+      prod-app-name: $env.services.sample-repo.parameters.repo_name
     schema:
       $ref: deploy.json
+  b:
+    $switch:
+      - $expr: $env.b
+      - $case: true
+        parameters:
+          b-app-name: $env.services.sample-repo.parameters.repo_name
+        schema:
+          $ref: deploy.json
