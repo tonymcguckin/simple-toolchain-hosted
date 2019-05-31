@@ -122,7 +122,7 @@ form:
     $switch:
       - $expr: $env.b
       - $case: true
-        service_id: pr_pipeline
+        service_id: pipeline
         parameters:
           b-app-name: $env.services["sample-repo"].parameters.repo_name
         schema:
