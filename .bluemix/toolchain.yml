@@ -120,9 +120,9 @@ form:
       $ref: deploy.json
   pr_pipeline:
     $switch:
-      - $expr: $env.b
+      - $expr: $env.a
       - $case: true
-        service_id: pipeline
+        #service_id: pipeline
         parameters:
           b-app-name: $env.services["sample-repo"].parameters.repo_name
         schema:
