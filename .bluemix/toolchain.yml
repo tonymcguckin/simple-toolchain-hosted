@@ -39,11 +39,11 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
 
-  pr_build:
+  pr_pipeline:
     $switch:
       - $expr: $env.a
       - $case: true
-        service_id: pr_build
+        service_id: pipeline
         parameters:
           p1: hello world
 
@@ -118,7 +118,7 @@ form:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
     schema:
       $ref: deploy.json
-  pr_build:
+  orion:
     $switch:
       - $expr: $env.b
       - $case: true
