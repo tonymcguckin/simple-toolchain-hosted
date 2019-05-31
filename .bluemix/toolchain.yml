@@ -39,13 +39,18 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 
-  atom:
+  a:
     $switch:
-      - $expr: $env.atom
-      - $default: particle
-        foo: bar
-      - $case: beam
-        hello: world
+      - $expr: $env.a
+      - $default: false
+        a: false
+      - $case: true
+        a: true
+  b:
+    $switch:
+      - $expr: $env.b
+      - $case: true
+        b: true
 
 services:
 
@@ -162,3 +167,16 @@ form:
           pr-api-key: ab87cc22eef8
         schema:
           $ref: pr_deploy.json
+
+  c:
+    $switch:
+      - $expr: $env.c
+      - $default: false
+        c: false
+      - $case: true
+        c: true
+  d:
+    $switch:
+      - $expr: $env.d
+      - $case: true
+        d: true
