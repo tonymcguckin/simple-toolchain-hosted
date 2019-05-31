@@ -152,3 +152,11 @@ form:
           pr-api-key: ab87cc22eef8
         schema:
           $ref: pr_deploy.json
+
+  atom:
+    $switch:
+      - $expr: $env.atom
+      - $default: particle
+        foo: bar
+      - $case: beam
+        hello: world
