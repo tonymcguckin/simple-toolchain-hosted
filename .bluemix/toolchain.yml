@@ -39,15 +39,11 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
 
-  a_service:
-    service_id: ""
-
-  b_service: {}
-
-  #c_service: null
-
-  #d_service:
-  #  service_id: undefined
+  foo:
+    $switch:
+      - $expr: $env.x
+      - $case: true
+        bar: hello world
 
   sample-repo:
     $switch:
