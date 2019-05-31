@@ -39,8 +39,8 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
 
-  #a_service:
-  #  service_id: ""
+  a_service:
+    service_id: ""
 
   b_service: {}
 
