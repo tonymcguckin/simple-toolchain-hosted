@@ -114,7 +114,7 @@ services:
 form:
   pipeline:
     parameters:
-      prod-app-name: $env.services.sample-repo.parameters.repo_name
+      prod-app-name: $env.services["sample-repo"].parameters.repo_name
     schema:
       $ref: deploy.json
   b:
@@ -122,6 +122,6 @@ form:
       - $expr: $env.b
       - $case: true
         parameters:
-          b-app-name: $env.services.sample-repo.parameters.repo_name
+          b-app-name: $env.services["sample-repo"].parameters.repo_name
         schema:
           $ref: deploy.json
