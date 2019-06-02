@@ -34,8 +34,8 @@ template:
           '[master]('+ $env.repository + '/tree/master)'
 
 toolchain:
-  #name: 'simple-toolchain-{{timestamp}}'
-  name: 'tmg-simple-toolchain-hosted-1'
+  name: 'simple-toolchain-{{timestamp}}'
+  #name: 'tmg-simple-toolchain-hosted-1'
 
   template:
     getting_started:
