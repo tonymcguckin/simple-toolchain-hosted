@@ -32,83 +32,26 @@ template:
         $env.branch ?
           '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
           '[master]('+ $env.repository + '/tree/master)'
-
 toolchain:
   name: 'simple-toolchain-{{timestamp}}'
-  #name: 'tmg-simple-toolchain-hosted-1'
-
+  #name: 'simple-toolchain-' + $env.timestamp
+  repo_url: 'https://github.com/open-toolchain/node-hello-world'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
-
 services:
-
-  pr_pipeline:
-    $switch:
-      - $expr: $env.enablePrPipeline
-      - $case: true
-        service_id: pipeline
-        parameters:
-          services:
-            - sample-repo
-          name: $env.services["sample-repo"].parameters.repo_name
-          ui_pipeline: true
-          configuration:
-            content:
-              $text: pr_pipeline.yml
-            env:
-              SAMPLE_REPO: sample-repo
-              CF_APP_NAME: $env.form.pr_pipeline.parameters["pr-app-name"]
-              PROD_SPACE_NAME: $env.form.pr_pipeline.parameters["pr-space"]
-              PROD_ORG_NAME: $env.form.pr_pipeline.parameters["pr-organization"]
-              PROD_REGION_ID: $env.form.pr_pipeline.parameters["pr-region"]
-              API_KEY: $env.form.pr_pipeline.parameters["pr-api-key"]
-            execute: true
-
   sample-repo:
-    $switch:
-      - $expr: $env.source_provider
-      - $default: 'hostedgit'
-        service_id: hostedgit
-        parameters:
-          repo_name: $env.toolchain.name
-          repo_url: >
-            $env.type === 'link' ? 
-              $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
-          source_repo_url: >
-            $env.type === 'fork' || $env.type === 'clone' ? 
-              $env.app_repo : ''
-          type: $env.type || 'clone'
-          has_issues: true
-          enable_traceability: true
-      - $case: 'githubconsolidated'
-        service_id: githubconsolidated
-        parameters:
-          repo_name: $env.toolchain.name
-          repo_url: >
-            $env.type === 'link' ? 
-              $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
-          source_repo_url: >
-            $env.type === 'fork' || $env.type === 'clone' ?
-              $env.app_repo : ''
-          type: $env.type  || 'clone'
-          visibility: public
-      - $case: 'github_integrated'
-        service_id: github_integrated
-        parameters:
-          repo_name: $env.toolchain.name
-          repo_url: >
-            $env.type === 'link' ? 
-              $env.app_repo : 'https://github.com/open-toolchain/node-hello-world'
-          source_repo_url: >
-            $env.type === 'fork' || $env.type === 'clone' ? 
-              $env.app_repo : ''
-          type: >
-            $env.type !== undefined ? 
-              $env.type : 'clone'
-          has_issues: true
-          enable_traceability: true
-
+    service_id: $env.source_provider ? $env.source_provider:'hostedgit'
+    parameters:
+      repo_name: $env.toolchain.name
+      repo_url: >
+        $env.type === 'link' ? $env.app_repo : $env.toolchain.repo_url
+      source_repo_url: >
+        $env.type === 'fork' || $env.type === 'clone' ? $env.app_repo : $env.toolchain.repo_url
+      type: $env.type || 'clone'
+      has_issues: true
+      enable_traceability: true
+      private_repo: false
   sample-build:
     service_id: pipeline
     parameters:
@@ -127,32 +70,11 @@ services:
           PROD_REGION_ID: $env.form.pipeline.parameters["prod-region"]
           API_KEY: $env.form.pipeline.parameters["api-key"]
         execute: true
-
   webide:
     service_id: orion
-    
 form:
-
   pipeline:
     parameters:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
-      prod-space: sth-space
-      prod-organisation: acme-org
-      prod-region: us-nyc
-      api-key: 88ea4fe9a1
     schema:
       $ref: deploy.json
-
-  pr_pipeline:
-    $switch:
-      - $expr: $env.enablePrPipeline
-      - $case: true
-        service_id: pipeline
-        parameters:
-          pr-app-name: $env.services["sample-repo"].parameters.repo_name
-          pr-space: sth-space
-          pr-organisation: acme-org
-          pr-region: eu-ire
-          pr-api-key: ab87cc22eef8
-        schema:
-          $ref: pr_deploy.json
