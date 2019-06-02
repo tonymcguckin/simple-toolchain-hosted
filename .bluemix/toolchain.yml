@@ -41,19 +41,6 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 
-  a:
-    $switch:
-      - $expr: $env.a
-      - $default: false
-        a: false
-      - $case: true
-        a: true
-  b:
-    $switch:
-      - $expr: $env.b
-      - $case: true
-        b: true
-
 services:
 
   pr_pipeline:
@@ -169,16 +156,3 @@ form:
           pr-api-key: ab87cc22eef8
         schema:
           $ref: pr_deploy.json
-
-  c:
-    $switch:
-      - $expr: $env.c
-      - $default: false
-        c: false
-      - $case: true
-        c: true
-  d:
-    $switch:
-      - $expr: $env.d
-      - $case: true
-        d: true
