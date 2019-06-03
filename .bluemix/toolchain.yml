@@ -33,8 +33,8 @@ template:
           '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
           '[master]('+ $env.repository + '/tree/master)'
 toolchain:
-  name: 'simple-toolchain-{{timestamp}}'
-  #name: 'simple-toolchain-' + $env.timestamp
+  name: >
+    "simple_toolchain_" + $env.timestamp
   repo_url: 'https://github.com/open-toolchain/node-hello-world'
   template:
     getting_started:
