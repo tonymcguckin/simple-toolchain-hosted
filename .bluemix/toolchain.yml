@@ -41,7 +41,7 @@ toolchain:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
-    service_id: $env.source_provider ? $env.source_provider:'hostedgit'
+    service_id: $env.source_provider ? $env.source_provider : 'hostedgit'
     parameters:
       repo_name: $env.toolchain.name
       repo_url: >
