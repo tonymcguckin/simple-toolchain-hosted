@@ -33,16 +33,16 @@ template:
           '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
           '[master]('+ $env.repository + '/tree/master)'
 toolchain:
-  name: foo
-  #name: >
-  #  'simple_toolchain_' + $env.timestamp
+  name: >
+    'simple_toolchain_' + $env.timestamp
   repo_url: 'https://github.com/open-toolchain/node-hello-world'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
   sample-repo:
-    service_id: $env.source_provider ? $env.source_provider : 'hostedgit'
+    service_id: >
+      $env.source_provider ? $env.source_provider : 'hostedgit'
     parameters:
       repo_name: $env.toolchain.name
       repo_url: >
