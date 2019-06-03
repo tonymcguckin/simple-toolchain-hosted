@@ -33,7 +33,7 @@ template:
           '[' + $env.branch + ']('+ $env.repository + '/tree/' + $env.branch + ')' :
           '[master]('+ $env.repository + '/tree/master)'
 toolchain:
-  name: $env.timestamp
+  name: foo
   #name: >
   #  'simple_toolchain_' + $env.timestamp
   repo_url: 'https://github.com/open-toolchain/node-hello-world'
