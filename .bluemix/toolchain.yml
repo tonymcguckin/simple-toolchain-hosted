@@ -170,15 +170,15 @@ form:
         schema:
           $ref: pr_deploy.json
 
-  c:
-    $switch:
-      - $expr: $env.c
-      - $default: false
-        c: false
-      - $case: true
-        c: true
-  d:
-    $switch:
-      - $expr: $env.d
-      - $case: true
-        d: true
+  #c:
+  #  $switch:
+  #    - $expr: $env.c
+  #    - $default: false
+  #      c: false
+  #    - $case: true
+  #      c: true
+  #d:
+  #  $switch:
+  #    - $expr: $env.d
+  #    - $case: true
+  #      d: true
