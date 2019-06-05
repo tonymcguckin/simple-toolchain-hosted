@@ -60,6 +60,12 @@ toolchain:
     b2:
       foo: bar
 
+  c:
+    $switch:
+      - $expr: $env.c
+      - $case: true
+        c: true
+
 services:
 
   sample-repo:
