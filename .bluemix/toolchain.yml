@@ -1,6 +1,16 @@
 version: '2'
+
 messages:
-  $i18n: locales.yml
+  $switch:
+    - $expr: $env.msg
+    - $default: false
+      $i18n: locales.yml
+    - $case: true
+      $i18n: locales.yml
+
+#messages:
+#  $i18n: locales.yml
+
 template:
   name:
     $ref: "#/messages/template.name"
