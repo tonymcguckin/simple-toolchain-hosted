@@ -59,10 +59,13 @@ toolchain:
       - $case: true
         a: true
   b:
+    b1: hello
     $switch:
       - $expr: $env.b
       - $case: true
         b: true
+    b2:
+      foo: bar
 
 services:
 
