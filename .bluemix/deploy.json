@@ -14,6 +14,12 @@
     },
     "type": "object",
     "properties": {
+	"pr-pipeline": {
+	   "title": "Enable PR Pipeline",
+	   "description": "Select this check box to enable a PR Pipeline",
+	   "type": "boolean",
+	   "default": false
+	},
         "prod-region": {
             "description": {
 	       "$ref":"#/messages/deploy.region"
@@ -61,9 +67,10 @@
 	{
             "type": "checkbox",
             "readonly": false,
-            "visibility": false,
-            "title": "pr pipeline",
-            "key": "prpipeline"
+            "visibility": "$env.source_provider === 'hostedgit'",
+            "title": "prpipeline",
+            "key": "prpipeline",
+            "onchange": "reload"
         },
         {
             "type": "text",
@@ -74,12 +81,12 @@
             "key": "prod-app-name"
         },
         {
-	        "type": "password",
-	        "readonly": false,
-	        "title": {
-                   "$ref": "#/messages/deploy.apiKeyTitle"
-                },
-	        "key": "api-key"
+		"type": "password",
+		"readonly": false,
+		"title": {
+		   "$ref": "#/messages/deploy.apiKeyTitle"
+		},
+		"key": "api-key"
         },
         {
             "type": "table",
