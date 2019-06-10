@@ -58,6 +58,13 @@
             "type": "validator",
             "url": "/devops/setup/bm-helper/helper.html"
         },
+	{
+            "type": "checkbox",
+            "readonly": false,
+            "visibility": true,
+            "title": "pr pipeline",
+            "key": "prpipeline"
+        },
         {
             "type": "text",
             "readonly": false,
