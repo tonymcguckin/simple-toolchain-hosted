@@ -61,7 +61,7 @@
 	{
             "type": "checkbox",
             "readonly": false,
-            "visibility": true,
+            "visibility": false,
             "title": "pr pipeline",
             "key": "prpipeline"
         },
