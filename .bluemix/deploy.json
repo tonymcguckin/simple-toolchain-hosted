@@ -18,7 +18,7 @@
 	   "type": "boolean",
 	   "title": "Enable PR Pipeline 1",
 	   "description": "Select this check box to enable a PR Pipeline",
-	   "default": true
+	   "default": "$env.enablePrPipeline == 'true' ? true : false"
 	},
         "prod-region": {
             "description": {
