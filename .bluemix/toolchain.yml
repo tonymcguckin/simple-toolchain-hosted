@@ -37,34 +37,10 @@ template:
 
 toolchain:
   name: 'simple-toolchain-{{timestamp}}'
-  #name: 'tmg-simple-toolchain-hosted-1'
 
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
-
-  a:
-    $switch:
-      - $expr: $env.a
-      - $default: false
-        a: false
-      - $case: true
-        a: true
-
-  b:
-    b1: hello
-    $switch:
-      - $expr: $env.b
-      - $case: true
-        b: true
-    b2:
-      foo: bar
-
-  c:
-    $switch:
-      - $expr: $env.c
-      - $case: true
-        c: true
 
 services:
 
@@ -118,7 +94,7 @@ services:
       services:
         - sample-repo
       name: $env.services["sample-repo"].parameters.repo_name
-      ui_pipeline: true
+      ui_pipeline: false
       configuration:
         content:
           $text: pipeline.yml
@@ -131,27 +107,27 @@ services:
           API_KEY: $env.form.pipeline.parameters["api-key"]
         execute: true
 
-  pr_pipeline:
-    $switch:
-      - $expr: $env.enablePrPipeline
-      - $case: true
-        service_id: pipeline
-        parameters:
-          services:
-            - sample-repo
-          name: $env.services["sample-repo"].parameters.repo_name
-          ui_pipeline: false
-          configuration:
-            content:
-              $text: pr_pipeline.yml
-            env:
-              SAMPLE_REPO: sample-repo
-              CF_APP_NAME: $env.form.pr_pipeline.parameters["pr-app-name"]
-              PROD_SPACE_NAME: $env.form.pr_pipeline.parameters["pr-space"]
-              PROD_ORG_NAME: $env.form.pr_pipeline.parameters["pr-organization"]
-              PROD_REGION_ID: $env.form.pr_pipeline.parameters["pr-region"]
-              API_KEY: $env.form.pr_pipeline.parameters["pr-api-key"]
-            execute: true
+  #pr_pipeline:
+  #  $switch:
+  #    - $expr: $env.enablePrPipeline
+  #    - $case: true
+  #      service_id: pipeline
+  #      parameters:
+  #        services:
+  #          - sample-repo
+  #        name: $env.services["sample-repo"].parameters.repo_name
+  #        ui_pipeline: false
+  #        configuration:
+  #          content:
+  #            $text: pr_pipeline.yml
+  #          env:
+  #            SAMPLE_REPO: sample-repo
+  #            CF_APP_NAME: $env.form.pr_pipeline.parameters["pr-app-name"]
+  #            PROD_SPACE_NAME: $env.form.pr_pipeline.parameters["pr-space"]
+  #            PROD_ORG_NAME: $env.form.pr_pipeline.parameters["pr-organization"]
+  #            PROD_REGION_ID: $env.form.pr_pipeline.parameters["pr-region"]
+  #            API_KEY: $env.form.pr_pipeline.parameters["pr-api-key"]
+  #          execute: true
 
   webide:
     service_id: orion
@@ -168,16 +144,16 @@ form:
     schema:
       $ref: deploy.json
 
-  pr_pipeline:
-    $switch:
-      - $expr: $env.enablePrPipeline
-      - $case: true
-        service_id: pipeline
-        parameters:
-          pr-app-name: $env.services["sample-repo"].parameters.repo_name
-          pr-space: sth-space
-          pr-organisation: acme-org
-          pr-region: eu-ire
-          pr-api-key: ab87cc22eef8
-        schema:
-          $ref: pr_deploy.json
+  #pr_pipeline:
+  #  $switch:
+  #    - $expr: $env.enablePrPipeline
+  #    - $case: true
+  #      service_id: pipeline
+  #      parameters:
+  #        pr-app-name: $env.services["sample-repo"].parameters.repo_name
+  #        pr-space: sth-space
+  #        pr-organisation: acme-org
+  #        pr-region: eu-ire
+  #        pr-api-key: ab87cc22eef8
+  #      schema:
+  #        $ref: pr_deploy.json
