@@ -140,7 +140,7 @@ services:
           services:
             - sample-repo
           name: $env.services["sample-repo"].parameters.repo_name
-          ui_pipeline: true
+          ui_pipeline: false
           configuration:
             content:
               $text: pr_pipeline.yml
