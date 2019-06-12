@@ -62,7 +62,8 @@
 	   "type": "boolean",
 	   "title": "Enable PR Pipeline",
 	   "description": "Select this check box to enable a PR Pipeline",
-	   "default": "$env.enablePrPipeline == 'true' ? 'true' : 'false'",
+	   "defaultenv": "$env.enablePrPipeline == 'true' ? 'true' : 'false'",
+	   "default": true,
            "onclick": "function(){ console.log('hello world'); }"
 	},
         {
