@@ -62,7 +62,8 @@
 	   "type": "boolean",
 	   "title": "Enable PR Pipeline",
 	   "description": "Select this check box to enable a PR Pipeline",
-	   "default": false
+	   "default": false,
+           "onclick": "function(){ console.log('hello world'); }"
 	},
         {
             "type": "text",
