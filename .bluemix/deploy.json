@@ -14,9 +14,9 @@
     },
     "type": "object",
     "properties": {
-	"pr1": {
+	"pr-pipeline": {
 	   "type": "boolean",
-	   "title": "Enable PR Pipeline 1",
+	   "title": "Enable PR Pipeline",
 	   "description": "Select this check box to enable a PR Pipeline",
 	   "default": "$env.enablePrPipeline == 'true' ? true : false"
 	},
@@ -64,14 +64,7 @@
             "type": "validator",
             "url": "/devops/setup/bm-helper/helper.html"
         },
-	"pr1",
-	{
-	   "type": "boolean",
-	   "title": "Enable PR Pipeline",
-	   "description": "Select this check box to enable a PR Pipeline",
-	   "default": "$env.enablePrPipeline == 'true' ? true : false",
-           "onclick": "function(){ console.log('hello world'); }"
-	},
+	"pr-pipeline",
         {
             "type": "text",
             "readonly": false,
