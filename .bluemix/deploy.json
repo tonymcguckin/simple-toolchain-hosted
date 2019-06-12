@@ -58,7 +58,7 @@
             "type": "validator",
             "url": "/devops/setup/bm-helper/helper.html"
         },
-	"prpipeline": {
+	{
 	   "type": "boolean",
 	   "title": "Enable PR Pipeline",
 	   "description": "Select this check box to enable a PR Pipeline",
