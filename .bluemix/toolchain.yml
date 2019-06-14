@@ -94,7 +94,7 @@ services:
       services:
         - sample-repo
       name: $env.services["sample-repo"].parameters.repo_name
-      ui_pipeline: false
+      ui_pipeline: true
       configuration:
         content:
           $text: pipeline.yml
@@ -116,7 +116,7 @@ services:
   #        services:
   #          - sample-repo
   #        name: $env.services["sample-repo"].parameters.repo_name
-  #        ui_pipeline: false
+  #        ui_pipeline: true
   #        configuration:
   #          content:
   #            $text: pr_pipeline.yml
