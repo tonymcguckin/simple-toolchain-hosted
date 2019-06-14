@@ -5,7 +5,7 @@ stages:
   - type: git
     branch: master
     pr_enabled: ${PR_ENABLED}
-    env_pr_enabled: "$dep_env.enablePrPipeline == 'true' ? true : false"
+    env_pr_enabled: "$env.enablePrPipeline == 'true' ? true : false"
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
