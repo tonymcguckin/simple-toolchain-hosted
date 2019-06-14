@@ -18,8 +18,7 @@
 	   "type": "boolean",
 	   "title": "Enable PR Pipeline",
 	   "description": "Select this check box to enable a PR Pipeline",
-	   "deprec_default": "$dep_env.enablePrPipeline == 'true' ? true : false",
-           "deprec_onclick": "function(){ console.log('hello world'); }"
+	   "default": "$env.enablePrPipeline == 'true' ? true : false"
 	},
         "prod-region": {
             "description": {
