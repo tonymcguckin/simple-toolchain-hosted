@@ -124,6 +124,7 @@ services:
             env:
               SAMPLE_REPO: sample-repo
               CF_APP_NAME: $env.form.pipeline.parameters["prod-app-name"]
+              PR_ENABLED: $env.form.pipeline.parameters["pr-pipeline"]
               PROD_SPACE_NAME: $env.form.pipeline.parameters["prod-space"]
               PROD_ORG_NAME: $env.form.pipeline.parameters["prod-organization"]
               PROD_REGION_ID: $env.form.pipeline.parameters["prod-region"]
@@ -138,5 +139,6 @@ form:
   pipeline:
     parameters:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
+      #pr-pipeline: $env.enablePrPipeline
     schema:
       $ref: deploy.json
