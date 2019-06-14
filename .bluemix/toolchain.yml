@@ -138,9 +138,5 @@ form:
   pipeline:
     parameters:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
-      #prod-space: sth-space
-      #prod-organisation: acme-org
-      #prod-region: us-nyc
-      #api-key: 88ea4fe9a1
     schema:
       $ref: deploy.json
