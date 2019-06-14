@@ -8,6 +8,3 @@ stages:
   triggers:
   - type: commit
     events: push pull_request pull_request_closed
-  jobs:
-  - name: Build
-    type: builder
