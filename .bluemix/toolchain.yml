@@ -145,7 +145,6 @@ form:
   pipeline:
     parameters:
       prod-app-name: $env.services["sample-repo"].parameters.repo_name
-      pr-pipeline: >
-        $env.enablePrPipeline == 'true' ? true : false
+      pr-pipeline: $env.enablePrPipeline
     schema:
       $ref: deploy.json
