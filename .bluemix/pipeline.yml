@@ -11,7 +11,8 @@ stages:
 ##
   triggers:
   - type: commit
-    events: "$env.enablePrPipeline == 'true' ? 'push pull_request pull_request_closed' : 'push'"
+    events: >
+      $env.enablePrPipeline == 'true' ? 'push pull_request pull_request_closed' : 'push'
 
 ##
 # $switch approach...
