@@ -19,11 +19,11 @@ template:
     - sample-build
     - sample-repo
 
-  $configuration:
+  #$configuration:
     #EVALUATION_DEPTH: 10
     #EVALUATE_TIMESTAMP_SERVERSIDE: true
-    BASIC_WARNINGS: false
-    EXPRESSION_MAXLENGTH: 5000
+    #BASIC_WARNINGS: false
+    #EXPRESSION_MAXLENGTH: 5000
 
   info:
     #original static git url and branch string definitions
