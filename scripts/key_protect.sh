@@ -39,32 +39,32 @@ function create_vault_instance {
     # optional hashicorp vault provider should be
     # handled/tested here too...
     
-    section "create_vault_instance: $KP_SERVICE_NAME"
+    section "create_vault_instance: $1"
     
     #
-    # create_vault_instance service-name service_id /*integrated service id for writer/iam access*/
+    # create_vault_instance service-name region
     #
     # eg: create_vault_instance secure-file-storage-kms region
     ##
-    if check_exists "$(ibmcloud resource service-instance $KP_SERVICE_NAME 2>&1)"; then
-        echo "Key Protect service named '$KP_SERVICE_NAME' already exists"
+    if check_exists "$(ibmcloud resource service-instance $1 2>&1)"; then
+        echo "Key Protect service named '$1' already exists"
     else
-        ibmcloud resource service-instance-create $KP_SERVICE_NAME kms tiered-pricing $REGION || exit 1
+        ibmcloud resource service-instance-create $1 kms tiered-pricing $2 || exit 1
     fi
 
-    KP_INSTANCE_ID=$(get_instance_id $KP_SERVICE_NAME)
-    KP_GUID=$(get_guid $KP_SERVICE_NAME)
+    KP_INSTANCE_ID=$(get_instance_id $1)
+    KP_GUID=$(get_guid $1)
     echo "KP_INSTANCE_ID=$KP_INSTANCE_ID"
     echo "KP_GUID=$KP_GUID"
     check_value "$KP_INSTANCE_ID"
     check_value "$KP_GUID"
 
-    if check_exists "$(ibmcloud resource service-key $KP_SERVICE_NAME-acckey-$KP_GUID 2>&1)"; then
-        echo "Key Protect key already exists"
-    else
-        ibmcloud resource service-key-create $KP_SERVICE_NAME-acckey-$KP_GUID Manager \
-            --instance-id "$KP_INSTANCE_ID" || exit 1
-    fi
+    #if check_exists "$(ibmcloud resource service-key $1-acckey-$KP_GUID 2>&1)"; then
+    #    echo "Key Protect key already exists"
+    #else
+    #    ibmcloud resource service-key-create $1-acckey-$KP_GUID Manager \
+    #        --instance-id "$KP_INSTANCE_ID" || exit 1
+    #fi
 }
 
 ## ----------------------------------------------------------------------------
