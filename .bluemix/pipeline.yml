@@ -16,6 +16,10 @@ stages:
       #!/bin/bash
       source <(curl -sSL "https://raw.githubusercontent.com/tonymcguckin/simple-toolchain-hosted/master/scripts/key_protect.sh")
       section "Pipeline YML calling Key Protect integration..."
+      echo "VAULT_SERVICE_NAME: $VAULT_SERVICE_NAME"
+      echo "VAULT_REGION: $VAULT_REGION"
+      echo "VAULT_SERVICE_NAME2: ${VAULT_SERVICE_NAME}"
+      echo "VAULT_REGION2: ${VAULT_REGION}"
       create_vault_instance ${VAULT_SERVICE_NAME} ${VAULT_REGION}
 - name: DEPLOY
   inputs:

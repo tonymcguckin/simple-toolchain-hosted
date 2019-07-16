@@ -40,6 +40,9 @@ function create_vault_instance {
     # handled/tested here too...
     
     section "create_vault_instance: $1"
+
+    echo "VAULT_SERVICE_NAME: $1"
+    echo "VAULT_REGION: $2"
     
     #
     # create_vault_instance service-name region
