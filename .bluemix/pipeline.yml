@@ -16,6 +16,7 @@ stages:
       #!/bin/bash
       source <(curl -sSL "https://raw.githubusercontent.com/tonymcguckin/simple-toolchain-hosted/master/scripts/key_protect.sh")
       section "Pipeline YML calling Key Protect integration..."
+      create_vault_instance "tmg_kp_1"
 - name: DEPLOY
   inputs:
   - type: job

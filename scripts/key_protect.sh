@@ -1,5 +1,49 @@
 #!/bin/bash
 
+# fail script on error
+set -e
+
+
+if [ -z "$REGION" ]; then
+  export REGION=$(ibmcloud target | grep Region | awk '{print $2}')
+fi
+echo "REGION=$REGION"
+
+if [ -z "$TARGET_RESOURCE_GROUP" ]; then
+  TARGET_RESOURCE_GROUP=default
+fi
+echo TARGET_RESOURCE_GROUP=$TARGET_RESOURCE_GROUP
+
+if [ -z "$TARGET_NAMESPACE" ]; then
+  export TARGET_NAMESPACE=default
+fi
+echo "TARGET_NAMESPACE=$TARGET_NAMESPACE"
+
+#
+# Set target
+#
+ibmcloud target -g $TARGET_RESOURCE_GROUP || exit 1
+
+#
+# The user running the script will be used to name some resources
+#
+TARGET_USER=$(ibmcloud target | grep User | awk '{print $2}')
+check_value "$TARGET_USER"
+echo "TARGET_USER=$TARGET_USER"
+
+#
+# Create Service ID
+#
+section "Service ID"
+if check_exists "$(ibmcloud iam service-id secure-file-storage-serviceID-$TARGET_USER 2>&1)"; then
+  echo "Service ID already exists"
+else
+  ibmcloud iam service-id-create "secure-file-storage-serviceID-$TARGET_USER" -d "serviceID for secure file storage tutorial"
+fi
+SERVICE_ID=$(ibmcloud iam service-id "secure-file-storage-serviceID-$TARGET_USER" --uuid)
+echo "SERVICE_ID=$SERVICE_ID"
+check_value "$SERVICE_ID"
+
 ## ----------------------------------------------------------------------------
 #
 # Key Protect API:
