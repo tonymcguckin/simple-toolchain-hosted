@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# fail script on error
-set -e
-
 ## ----------------------------------------------------------------------------
 #
 # Key Protect API:
@@ -40,9 +37,6 @@ function create_vault_instance {
     # handled/tested here too...
     
     section "create_vault_instance: $1"
-
-    echo "VAULT_SERVICE_NAME: $1"
-    echo "VAULT_REGION: $2"
     
     #
     # create_vault_instance service-name region
@@ -62,12 +56,12 @@ function create_vault_instance {
     check_value "$KP_INSTANCE_ID"
     check_value "$KP_GUID"
 
-    #if check_exists "$(ibmcloud resource service-key $1-acckey-$KP_GUID 2>&1)"; then
-    #    echo "Key Protect key already exists"
-    #else
-    #    ibmcloud resource service-key-create $1-acckey-$KP_GUID Manager \
-    #        --instance-id "$KP_INSTANCE_ID" || exit 1
-    #fi
+    if check_exists "$(ibmcloud resource service-key $1-acckey-$KP_GUID 2>&1)"; then
+        echo "Key Protect key already exists"
+    else
+        ibmcloud resource service-key-create $1-acckey-$KP_GUID Manager \
+            --instance-id "$KP_INSTANCE_ID" || exit 1
+    fi
 }
 
 ## ----------------------------------------------------------------------------
