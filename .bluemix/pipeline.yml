@@ -10,6 +10,12 @@ stages:
   jobs:
   - name: Build
     type: builder
+  - name: KeyProtectIntegration
+    type: builder
+    script: |
+      #!/bin/bash
+      source ./scripts/key_protect.sh
+      section "Hello World"
 - name: DEPLOY
   inputs:
   - type: job
