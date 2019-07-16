@@ -16,7 +16,7 @@ stages:
       #!/bin/bash
       source <(curl -sSL "https://raw.githubusercontent.com/tonymcguckin/simple-toolchain-hosted/master/scripts/key_protect.sh")
       section "Pipeline YML calling Key Protect integration..."
-      create_vault_instance "${CF_APP_NAME}-keyprotect" "${PROD_REGION_ID}"
+      create_vault_instance ${VAULT_SERVICE_NAME} ${VAULT_REGION}
 - name: DEPLOY
   inputs:
   - type: job
