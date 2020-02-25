@@ -44,10 +44,10 @@ services:
     service_id: keyprotect
     parameters:
       name: tmg-kp-integration
-      vaultType: kp
-      vaultRegion: us-south
-      vaultResourceGroup: default
-      vaultInstanceName: tmg-kp-1
+      vault-type: kp
+      vault-tegion: us-south
+      vault-resource-group: default
+      vault-instance-name: tmg-kp-1
   sample-repo:
     service_id: >
       $env.source_provider ? $env.source_provider : 'hostedgit'
