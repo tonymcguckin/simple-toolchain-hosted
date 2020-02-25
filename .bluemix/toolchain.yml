@@ -40,6 +40,14 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
+  tmg-kp-integration:
+    service_id: keyprotect
+    parameters:
+      integrationName: tmg-kp-integration
+      vaultType: kp
+      vaultRegion: us-south
+      vaultResourceGroup: default
+      vaultInstanceName: tmg-kp-1
   sample-repo:
     service_id: >
       $env.source_provider ? $env.source_provider : 'hostedgit'
@@ -67,8 +75,8 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          VAULT_SERVICE_NAME: "sample-repo-vault-{{timestamp}}"
-          VAULT_REGION: "ibm:yp:us-south"
+          SECREF1: "{kp::us-south.default.tmg-kp-1.cloud-apikey}"
+          SECREF2: "{vti::tmg-kp-integration.cloud-apikey}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
