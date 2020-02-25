@@ -85,6 +85,8 @@ services:
         execute: true
   webide:
     service_id: orion
+  artifactory:
+    service_id: artifactory
 form:
   pipeline:
     parameters:
