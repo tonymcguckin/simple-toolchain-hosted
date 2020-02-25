@@ -8,10 +8,17 @@ stages:
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
+  properties:
+  - name: SECREF1
+    value: {kp::us-south.default.tmg-kp-1.cloud-apikey}
+    type: text
+  - name: SECREF2
+    value: '{kp::us-south.default.tmg-kp-1.cloud-apikey}'
+    type: text
   jobs:
   - name: Build
     type: builder
-  - name: KeyProtectIntegration
+  - name: SecretsIntegration
     type: builder
     script: |
       #!/bin/bash
@@ -21,7 +28,9 @@ stages:
       #echo "VAULT_REGION=$VAULT_REGION"
       #create_vault_instance "${VAULT_SERVICE_NAME}" "${VAULT_REGION}"
       echo "SECREF1=$SECREF1"
+      echo "SECREF1=${SECREF1}"
       echo "SECREF2=$SECREF2"
+      echo "SECREF2=${SECREF2}"
 - name: DEPLOY
   inputs:
   - type: job
