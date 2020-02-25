@@ -94,6 +94,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{{apiKey}}'
+      api-key: '{vti::tmg-kp-integration.cloud-apikey}'
     schema:
       $ref: deploy.json
