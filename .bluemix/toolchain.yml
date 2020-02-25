@@ -87,6 +87,8 @@ services:
     service_id: orion
   artifactory:
     service_id: artifactory
+    parameters:
+      foo: "{vti::tmg-kp-integration.master-apikey}"
 form:
   pipeline:
     parameters:
