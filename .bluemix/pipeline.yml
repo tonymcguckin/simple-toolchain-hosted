@@ -20,6 +20,8 @@ stages:
       #echo "VAULT_SERVICE_NAME=$VAULT_SERVICE_NAME"
       #echo "VAULT_REGION=$VAULT_REGION"
       #create_vault_instance "${VAULT_SERVICE_NAME}" "${VAULT_REGION}"
+      echo "SECREF1=$SECREF1"
+      echo "SECREF2=$SECREF2"
 - name: DEPLOY
   inputs:
   - type: job
