@@ -45,8 +45,7 @@ services:
     service_id: keyprotect
     parameters:
       name: tmg-kp-integration
-      vault-type: kp
-      vault-tegion: us-south
+      vault-region: us-south
       vault-resource-group: default
       vault-instance-name: tmg-kp-1
   sample-repo:
@@ -76,8 +75,8 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          SECREF1: "{kp::us-south.default.tmg-kp-1.cloud-apikey}"
-          SECREF2: "{vti::tmg-kp-integration.cloud-apikey}"
+          SECREF1: "{kp::us-south.default.tmg-kp-1.master-apikey}"
+          SECREF2: "{vti::tmg-kp-integration.master-apikey}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -95,6 +94,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-kp-integration.cloud-apikey}'
+      api-key: '{vti::tmg-kp-integration.master-apikey}'
     schema:
       $ref: deploy.json
