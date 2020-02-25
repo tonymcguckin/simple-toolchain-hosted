@@ -40,10 +40,11 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  tmg-kp-integration:
+  tmg-kp-integration1:
     service_id: keyprotect
     parameters:
       integrationName: tmg-kp-integration
+      vaultName: tmg-kp-integration1
       vaultType: kp
       vaultRegion: us-south
       vaultResourceGroup: default
