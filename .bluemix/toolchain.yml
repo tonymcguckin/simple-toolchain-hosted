@@ -16,6 +16,7 @@ template:
   required:
     - sample-build
     - sample-repo
+    - tmg-kp-integration
   info:
     #original static git url and branch string definitions
     #git url: >-
