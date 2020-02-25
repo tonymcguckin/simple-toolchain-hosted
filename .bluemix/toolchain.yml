@@ -17,6 +17,7 @@ template:
     - sample-build
     - sample-repo
     - tmg-kp-integration
+    - artifactory
   info:
     #original static git url and branch string definitions
     #git url: >-
@@ -88,7 +89,7 @@ services:
   artifactory:
     service_id: artifactory
     parameters:
-      foo: "{vti::tmg-kp-integration.master-apikey}"
+      token: "{vti::tmg-kp-integration.master-apikey}"
 form:
   pipeline:
     parameters:
