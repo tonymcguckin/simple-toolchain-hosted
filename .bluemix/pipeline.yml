@@ -8,13 +8,6 @@ stages:
     service: ${SAMPLE_REPO}
   triggers:
   - type: commit
-  properties:
-  - name: SECREF1
-    value: {kp::us-south.default.tmg-kp-1.cloud-apikey}
-    type: text
-  - name: SECREF2
-    value: '{kp::us-south.default.tmg-kp-1.cloud-apikey}'
-    type: text
   jobs:
   - name: Build
     type: builder
