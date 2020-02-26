@@ -89,6 +89,7 @@ services:
   artifactory:
     service_id: artifactory
     parameters:
+      name: artifactory1
       token: "{vti::tmg-kp-integration.master-apikey}"
 form:
   pipeline:
