@@ -89,6 +89,7 @@ services:
   artifactory:
     service_id: artifactory
     parameters:
+      dashboard_url: "https://na.artifactory.swg-devops.com/artifactory/webapp/"
       name: artifactory1
       token: "{vti::tmg-kp-integration.master-apikey}"
 form:
