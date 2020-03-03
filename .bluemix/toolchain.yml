@@ -47,8 +47,8 @@ services:
     parameters:
       name: tmg-kp-integration
       region: us-south
-      resource-group: default
-      instance-name: tmg-kp-1
+      resource-group: Default
+      instance-name: deleteMe
   sample-repo:
     service_id: >
       $env.source_provider ? $env.source_provider : 'hostedgit'
@@ -76,8 +76,8 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          SECREF1: "{kp::us-south.default.tmg-kp-1.master-apikey}"
-          SECREF2: "{vti::tmg-kp-integration.master-apikey}"
+          SECREF1: "{kp::us-south.Default.deleteMe.deleteMeKey1}"
+          SECREF2: "{vti::tmg-kp-integration.deleteMeKey1}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -101,6 +101,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-kp-integration.master-apikey}'
+      api-key: '{vti::tmg-kp-integration.deleteMeKey1}'
     schema:
       $ref: deploy.json
