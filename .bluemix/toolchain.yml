@@ -46,7 +46,7 @@ services:
     service_id: keyprotect
     parameters:
       name: tmg-kp-integration
-      region: us-south
+      region: au-syd
       resource-group: default
       instance-name: tmg-kp-1
   sample-repo:
@@ -76,7 +76,7 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          SECREF1: "{kp::us-south.default.tmg-kp-1.master-apikey}"
+          SECREF1: "{kp::au-syd.default.tmg-kp-1.master-apikey}"
           SECREF2: "{vti::tmg-kp-integration.master-apikey}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
