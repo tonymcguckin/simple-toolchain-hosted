@@ -86,12 +86,7 @@ services:
     service_id: vault
     parameters:
       name: tmg-vault-service
-      server_protocol: https
-      server_name: vserv-test.sos.ibm.com
-      server_port: 8200
-      authentication_mode: approle
-      role_id: 52d27b77-c324-2b84-79dc-0ed938d38d2e
-      secret_id: 1d5e7e7d-13cd-97f8-c608-0256d18e4e64
+      hsm_key: us-south.default.tmg-kp-1.tmg-ibm-hv-config
 
 form:
   pipeline:
