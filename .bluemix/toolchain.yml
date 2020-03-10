@@ -16,8 +16,7 @@ template:
   required:
     - sample-build
     - sample-repo
-    - tmg-kp-integration
-    - artifactory
+    - tmg-hv-integration
   info:
     #original static git url and branch string definitions
     #git url: >-
@@ -41,14 +40,21 @@ toolchain:
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
+
 services:
-  tmg-kp-integration:
-    service_id: keyprotect
+  
+  # hashicorp vault - ibm test VAAS
+  tmg-vault-service:
+    service_id: vault
     parameters:
-      name: tmg-kp-integration
-      region: us-south
-      resource-group: default
-      instance-name: tmg-kp-1
+      name: tmg-vault-service
+      server_protocol: https
+      server_name: vserv-test.sos.ibm.com
+      server_port: 8200
+      authentication_mode: approle
+      role_id: 52d27b77-c324-2b84-79dc-0ed938d38d2e
+      secret_id: 1d5e7e7d-13cd-97f8-c608-0256d18e4e64
+
   sample-repo:
     service_id: >
       $env.source_provider ? $env.source_provider : 'hostedgit'
@@ -76,8 +82,6 @@ services:
           $text: pipeline.yml
         env:
           SAMPLE_REPO: sample-repo
-          SECREF1: "{kp::us-south.default.tmg-kp-1.master-apikey}"
-          SECREF2: "{vti::tmg-kp-integration.master-apikey}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -86,12 +90,6 @@ services:
         execute: true
   webide:
     service_id: orion
-  #artifactory:
-   # service_id: artifactory
-    #parameters:
-     # dashboard_url: "https://na.artifactory.swg-devops.com/artifactory/webapp/"
-      #name: artifactory1
-      #token: "{vti::tmg-kp-integration.master-apikey}"
 form:
   pipeline:
     parameters:
@@ -101,6 +99,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-kp-integration.master-apikey}'
+      api-key: '{vti::tmg-vault-service.generic/project/otc-setup/tmg-apikeys.field=cloud-apikey}'
     schema:
       $ref: deploy.json
