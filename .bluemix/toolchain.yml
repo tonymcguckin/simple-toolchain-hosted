@@ -81,12 +81,16 @@ services:
   webide:
     service_id: orion
   
-  # hashicorp vault - ibm test VAAS
+  # hashicorp vault
   tmg-vault-service:
     service_id: vault
     parameters:
       name: tmg-vault-service
-      connection: us-south.default.tmg-kp-1.tmg-hv-config
+      server_protocol: http
+      server_name: 127.0.0.1
+      server_port: 8200
+      authentication_mode: token
+      token: s.tdWo8jsgtR9zEawDcrZMY7JC
 
 form:
   pipeline:
