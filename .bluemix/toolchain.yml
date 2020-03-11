@@ -86,7 +86,7 @@ services:
     service_id: vault
     parameters:
       name: tmg-vault-service
-      hsm_key: us-south.default.tmg-kp-1.tmg-ibm-hv-config
+      connection: us-south.default.tmg-kp-1.tmg-ibm-hv-config
 
 form:
   pipeline:
