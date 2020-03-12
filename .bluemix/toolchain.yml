@@ -80,15 +80,12 @@ services:
 
   webide:
     service_id: orion
-  
-  # hashicorp vault - ibm test VAAS
+
   tmg-vault-service:
-    service_id: vault
+    service_id: hashicorp-vault
     parameters:
       name: tmg-vault-service
-      server_protocol: https
-      server_name: my-vault-server.com
-      server_port: 8200
+      server_url: "http://127.0.0.1:8200"
       authentication_mode: approle
       role_id: 52d27b77-c324-2b84-79dc-0ed938d38d2e
       secret_id: 1d5e7e7d-13cd-97f8-c608-0256d18e4e64
