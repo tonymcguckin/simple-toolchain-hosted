@@ -80,10 +80,9 @@ services:
 
   webide:
     service_id: orion
-  
-  # hashicorp vault - ibm test VAAS
+
   tmg-vault-service:
-    service_id: vault
+    service_id: hashicorp-vault
     parameters:
       name: tmg-vault-service
       connection: us-south.default.tmg-kp-1.tmg-hv-config
