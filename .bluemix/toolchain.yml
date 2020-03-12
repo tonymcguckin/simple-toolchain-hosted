@@ -80,15 +80,12 @@ services:
 
   webide:
     service_id: orion
-  
-  # hashicorp vault
+
   tmg-vault-service:
-    service_id: vault
+    service_id: hashicorp-vault
     parameters:
       name: tmg-vault-service
-      server_protocol: http
-      server_name: 127.0.0.1
-      server_port: 8200
+      server_url: "http://127.0.0.1:8200"
       authentication_mode: token
       token: s.tdWo8jsgtR9zEawDcrZMY7JC
 
