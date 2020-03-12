@@ -101,6 +101,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-vault-service.secret/data/api-keys.field=master-apikey}'
+      api-key: '{vault::tmg-vault-service.secret/data/api-keys.field=master-apikey}'
     schema:
       $ref: deploy.json
