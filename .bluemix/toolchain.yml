@@ -82,10 +82,10 @@ services:
     service_id: orion
 
   tmg-vault-service:
-    service_id: hashicorp-vault
+    service_id: hashicorpvault
     parameters:
       name: tmg-vault-service
-      connection: us-south.default.tmg-kp-1.tmg-ibm-hv-config
+      connection: [us-south|default|tmg-kp-1|tmg-ibm-hv-config]
 
 form:
   pipeline:
