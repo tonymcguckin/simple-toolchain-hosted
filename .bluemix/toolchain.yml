@@ -85,7 +85,7 @@ services:
     service_id: hashicorp-vault
     parameters:
       name: tmg-vault-service
-      connection: us-south.default.tmg-kp-1.tmg-hv-config
+      connection: "[us-south|default|tmg-kp-1|tmg-hv-config]"
 
 form:
   pipeline:
