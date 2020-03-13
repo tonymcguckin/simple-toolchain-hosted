@@ -101,6 +101,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-kp-integration.master-apikey}'
+      api-key: '{vault::tmg-kp-integration.master-apikey}'
     schema:
       $ref: deploy.json
