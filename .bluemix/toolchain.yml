@@ -82,7 +82,7 @@ services:
     service_id: orion
 
   tmg-vault-service:
-    service_id: hashicorp-vault
+    service_id: hashicorpvault
     parameters:
       name: tmg-vault-service
       server_url: "http://127.0.0.1:8200"
