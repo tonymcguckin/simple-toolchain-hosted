@@ -88,6 +88,7 @@ services:
       server_url: "http://127.0.0.1:8200"
       authentication_mode: token
       token: s.tdWo8jsgtR9zEawDcrZMY7JC
+      #token: "us-south.default.tmg-kp-1.tmg-hv-token"
 
 form:
   pipeline:
