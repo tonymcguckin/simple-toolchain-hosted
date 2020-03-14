@@ -85,7 +85,10 @@ services:
     service_id: hashicorpvault
     parameters:
       name: tmg-vault-service
-      connection: "[us-south|default|tmg-kp-1|tmg-ibm-hv-config]"
+      server_url: "http://127.0.0.1:8200"
+      authentication_method: approle
+      role_id: "us-south.default.tmg-kp-1.tmg-ibm-hv-role_id"
+      secret_id: "us-south.default.tmg-kp-1.tmg-ibm-hv-secret_id"
 
 form:
   pipeline:
