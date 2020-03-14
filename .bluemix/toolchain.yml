@@ -85,7 +85,8 @@ services:
     service_id: hashicorpvault
     parameters:
       name: tmg-vault-service
-      connection: "[us-south|default|tmg-kp-1|tmg-hv-config]"
+      authentication_mode: keyprotect
+      token: "us-south.default.tmg-kp-1.tmg-hv-token"
 
 form:
   pipeline:
