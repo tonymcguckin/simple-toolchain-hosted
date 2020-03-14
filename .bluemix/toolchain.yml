@@ -86,7 +86,7 @@ services:
     parameters:
       name: tmg-vault-service
       server_url: "http://127.0.0.1:8200"
-      authentication_mode: token
+      authentication_method: token
       token: "us-south.default.tmg-kp-1.tmg-hv-token"
 
 form:
