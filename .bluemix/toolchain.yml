@@ -94,6 +94,7 @@ services:
     parameters:
       name: tmg-vault-service
       server_url: "http://127.0.0.1:8200"
+      dashboard_url: "http://127.0.0.1:8200/ui/vault/auth?with=token"
       authentication_method: token
       token: s.tdWo8jsgtR9zEawDcrZMY7JC
       #token: "{kp::us-south.default.tmg-kp-1.token}"
