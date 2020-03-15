@@ -81,6 +81,14 @@ services:
   webide:
     service_id: orion
 
+  tmg-kp-service:
+    service_id: keyprotect
+    parameters:
+      name: tmg-kp-service
+      region: us-south
+      resource-group: default
+      instance-name: tmg-kp-1
+
   tmg-vault-service:
     service_id: hashicorpvault
     parameters:
@@ -88,7 +96,8 @@ services:
       server_url: "http://127.0.0.1:8200"
       authentication_method: token
       token: s.tdWo8jsgtR9zEawDcrZMY7JC
-      #token: "us-south.default.tmg-kp-1.tmg-hv-token"
+      #token: "{kp::us-south.default.tmg-kp-1.token}"
+      #token: "{vault::tmg-kp-service.token}"
 
 form:
   pipeline:
