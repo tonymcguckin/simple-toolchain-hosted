@@ -42,10 +42,10 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  tmg-kp-integration:
+  padraics-kp-1:
     service_id: keyprotect
     parameters:
-      name: tmg-kp-integration
+      name: padraics-kp-1
       region: us-south
       resource-group: Default
       instance-name: deleteMe
@@ -77,7 +77,7 @@ services:
         env:
           SAMPLE_REPO: sample-repo
           SECREF1: "{kp::us-south.Default.deleteMe.deleteMeKey1}"
-          SECREF2: "{vti::tmg-kp-integration.deleteMeKey1}"
+          SECREF2: "{vault::padraics-kp-1.deleteMeKey1}"
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -91,7 +91,7 @@ services:
     #parameters:
      # dashboard_url: "https://na.artifactory.swg-devops.com/artifactory/webapp/"
       #name: artifactory1
-      #token: "{vti::tmg-kp-integration.master-apikey}"
+      #token: "{vault::padraics-kp-1.deleteMeKey1}"
 form:
   pipeline:
     parameters:
@@ -101,6 +101,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vti::tmg-kp-integration.deleteMeKey1}'
+      api-key: '{vault::padraics-kp-1.deleteMeKey1}'
     schema:
       $ref: deploy.json
