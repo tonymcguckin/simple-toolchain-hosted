@@ -81,6 +81,14 @@ services:
   webide:
     service_id: orion
 
+  sample-keyprotect:
+    service_id: keyprotect
+    parameters:
+      name: sample-keyprotect
+      region: us-south
+      resource-group: default
+      instance-name: tmg-kp-1
+
   sample-vault:
     service_id: hashicorpvault
     parameters:
@@ -88,8 +96,8 @@ services:
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui/vault/auth?with=token"
       authentication_method: approle
-      role_id: 52d27b77-c324-2b84-79dc-0ed938d38d2e
-      secret_id: 1d5e7e7d-13cd-97f8-c608-0256d18e4e64
+      role_id: "{vault::sample-keyprotect.role_id}"
+      secret_id: "{vault::sample-keyprotect.secret_id}"
 
 form:
   pipeline:
