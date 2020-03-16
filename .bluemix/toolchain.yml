@@ -82,22 +82,15 @@ services:
   webide:
     service_id: orion
 
-  tmg-kp-service:
-    service_id: keyprotect
-    parameters:
-      name: tmg-kp-service
-      region: us-south
-      resource-group: default
-      instance-name: tmg-kp-1
-
-  tmg-vault-service:
+  sample-vault:
     service_id: hashicorpvault
     parameters:
-      name: tmg-vault-service
-      server_url: "http://127.0.0.1:8200"
-      dashboard_url: "http://127.0.0.1:8200/ui"
-      authentication_method: token
-      token: "{vault::tmg-kp-service.token}"
+      name: sample-vault
+      server_url: "https://vserv-test.sos.ibm.com:8200"
+      dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui/vault/auth?with=token"
+      authentication_method: approle
+      role_id: 52d27b77-c324-2b84-79dc-0ed938d38d2e
+      secret_id: 1d5e7e7d-13cd-97f8-c608-0256d18e4e64
 
 form:
   pipeline:
@@ -108,6 +101,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vault::tmg-vault-service.secret/data/api-keys.field=master-apikey}'
+      api-key: '{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}'
     schema:
       $ref: deploy.json
