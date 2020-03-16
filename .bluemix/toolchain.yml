@@ -16,6 +16,7 @@ template:
   required:
     - sample-build
     - sample-repo
+    - sample-keyprotect
     - sample-vault
   info:
     #original static git url and branch string definitions
