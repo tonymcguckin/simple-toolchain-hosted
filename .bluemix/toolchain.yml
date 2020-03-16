@@ -16,8 +16,7 @@ template:
   required:
     - sample-build
     - sample-repo
-    - tmg-vault-service
-    - tmg-kp-service
+    - sample-vault
   info:
     #original static git url and branch string definitions
     #git url: >-
