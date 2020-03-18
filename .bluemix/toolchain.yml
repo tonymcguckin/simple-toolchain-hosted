@@ -16,7 +16,6 @@ template:
   required:
     - sample-build
     - sample-repo
-    - sample-keyprotect
     - sample-vault
   info:
     #original static git url and branch string definitions
@@ -82,14 +81,6 @@ services:
   webide:
     service_id: orion
 
-  sample-keyprotect:
-    service_id: keyprotect
-    parameters:
-      name: sample-keyprotect
-      region: us-south
-      resource-group: default
-      instance-name: tmg-kp-1
-
   sample-vault:
     service_id: hashicorpvault
     parameters:
@@ -97,8 +88,8 @@ services:
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui/vault/auth?with=token"
       authentication_method: approle
-      role_id: "{vault::sample-keyprotect.role_id}"
-      secret_id: "{vault::sample-keyprotect.secret_id}"
+      role_id: "{kp::us-south.default.tmg-kp-1.role_id}"
+      secret_id: "{kp::us-south.default.tmg-kp-1.secret_id}"
 
 form:
   pipeline:
