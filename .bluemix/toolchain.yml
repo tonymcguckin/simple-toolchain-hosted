@@ -102,6 +102,7 @@ form:
       prod-region: '{{prodRegion}}'
       api-key: >
         {vault::sample-vault.
-        generic/project/otc-setup/apikeys.field=dev-apikey}
+        generic/project/otc-setup/apikeys.
+        field=dev-apikey}
     schema:
       $ref: deploy.json
