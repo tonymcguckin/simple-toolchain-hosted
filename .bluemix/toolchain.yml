@@ -99,6 +99,7 @@ services:
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
       secret_id: "{vault::sample-keyprotect.secret_id}"
+      path: "generic/project/otc-setup/apikeys"
 
 form:
   pipeline:
@@ -109,6 +110,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: '{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}'
+      api-key: '{vault::sample-vault.dev-apikey}'
     schema:
       $ref: deploy.json
