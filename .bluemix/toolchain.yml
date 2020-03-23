@@ -86,7 +86,7 @@ services:
     service_id: keyprotect
     parameters:
       name: sample-keyprotect
-      region: us-south
+      region: au-syd
       resource-group: default
       instance-name: tmg-kp-1
 
@@ -109,6 +109,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}"
+      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=syd-apikey}"
     schema:
       $ref: deploy.json
