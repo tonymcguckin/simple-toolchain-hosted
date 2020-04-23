@@ -99,6 +99,7 @@ services:
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
       secret_id: "{vault::sample-keyprotect.secret_id}"
+      path: "generic/project/otc-setup"
 
 form:
   pipeline:
