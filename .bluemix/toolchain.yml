@@ -96,10 +96,10 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
+      path: "generic/project/otc-setup"
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
       secret_id: "{vault::sample-keyprotect.secret_id}"
-      path: "generic/project/otc-setup"
 
 form:
   pipeline:
@@ -111,5 +111,7 @@ form:
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
       api-key: "{vault::sample-vault.generic/project/otc-setup/tmg-apikeys.field=dev-apikey}"
+      #api-key: "{vault::sample-vault.tmg-apikeys.field=dev-apikey}"
+      #api-key: "{vault::sample-vault.tmg-apikeys}"
     schema:
       $ref: deploy.json
