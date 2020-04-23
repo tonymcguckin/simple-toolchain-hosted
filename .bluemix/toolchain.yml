@@ -86,7 +86,7 @@ services:
     parameters:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
-      path: generic/project/otc-setup/apikeys
+      path: "generic/project/otc-setup"
 
 form:
   pipeline:
@@ -98,6 +98,6 @@ form:
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
       api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}"
-      #api-key: "{vault::sample-vault.dev-apikey}"
+      #api-key: "{vault::sample-vault.apikeys.field=dev-apikey}"
     schema:
       $ref: deploy.json
