@@ -110,7 +110,7 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}"
+      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys?field=dev-apikey}"
       #api-key: "{vault::sample-vault.apikeys?field=dev-apikey}"
       #api-key: "{vault::sample-vault.apikeys}"
     schema:
