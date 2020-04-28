@@ -81,12 +81,47 @@ services:
   webide:
     service_id: orion
 
-  sample-vault:
+  ########################################################################################
+  #
+  # X
+  #
+  # policy excludes 'list' on mount 'ibm/devops/otc-setup'
+  #
+  # by specifying a 'secret' property an editable inputbox with
+  # this default value will be rendered instead of a combobox if
+  # an internal 'list' call fails - if the internal 'list' call
+  # succeeds, a combobox with a listing of secret names will be
+  # rendered instead and positioned at the 'secret' name if it
+  # exists within the listing...
+  #
+  mbp-vault:
     service_id: hashicorpvault
     parameters:
-      name: sample-vault
+      name: mbp-vault
+      server_url: "http://127.0.0.1:8200"
+      path: "ibm/devops/otc-setup"
+      secret: "apikeys"
+      engine: "kv-2"
+
+  ########################################################################################
+  #
+  # Y
+  #
+  # policy includes 'list' on mount 'generic/project/otc-setup'
+  #
+  # in the absence of a 'secret' property being declared
+  # a combobox for listing secret names will be rendered
+  # if an internal 'list' call succeeds on the path - if
+  # the internal 'list' call fails, a blank editable inputbox
+  # will be rendered instead...
+  #
+  vserv-vault:
+    service_id: hashicorpvault
+    parameters:
+      name: vserv-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       path: "generic/project/otc-setup"
+      #engine: "kv-1" --> default
 
 form:
   pipeline:
@@ -97,7 +132,42 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=dev-apikey}"
-      #api-key: "{vault::sample-vault.apikeys.field=dev-apikey}"
+
+      ########################################################################################
+      #
+      # Y
+      #
+      
+      # long form
+      api-key: "{vault::vserv-vault.generic/project/otc-setup/apikeys.field=ibm-apikey}"
+      
+      # one combobox allows selection of 'apikeys' secret name
+      # from list of secret names under the mount path...
+      # only one key is found in the 'apikeys' secret therefore
+      # no additional combobox or inputbox is rendered and
+      # the 0th field is inferred and extracted...
+      
+      # short form
+      #api-key: "{vault::vserv-vault.apikeys}"
+      
+      ########################################################################################
+      #
+      # X
+      #
+      
+      # long form
+      sid-key: "{vault::mbp-vault.ibm/devops/otc-setup/config-map.field=ibm-sidkey}"
+      
+      # one combobox allows selection of 'config-map' secret name
+      # from list of secret names under the mount path...
+      # more than one key is found in the 'config-map' secret
+      # therefore a second combobox is rendered with the
+      # list of key names within 'config-map'
+      
+      # short form
+      #sid-key: "{vault::mbp-vault.config-map.ibm-sidkey}"
+
+      ########################################################################################
+
     schema:
       $ref: deploy.json
