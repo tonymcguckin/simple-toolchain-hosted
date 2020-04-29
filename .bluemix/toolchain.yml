@@ -139,16 +139,17 @@ form:
       #
       
       # long form
-      api-key: "{vault::vserv-vault.generic/project/otc-setup/apikeys.field=ibm-apikey}"
+      #api-key: "{vault::vserv-vault.generic/project/otc-setup/sid_api_keys.field=dev-apikey}"
       
-      # one combobox allows selection of 'apikeys' secret name
+      # one combobox allows selection of 'sid_api_keys' secret name
       # from list of secret names under the mount path...
-      # only one key is found in the 'apikeys' secret therefore
-      # no additional combobox or inputbox is rendered and
-      # the 0th field is inferred and extracted...
+      # only one key is found in the 'sid_api_keys' secret therefore
+      # no additional combobox or inputbox is rendered for the field
+      # and the 0th field is inferred and extracted automatically...
+      # eg: same as specifiying {vault::vserv-vault.sid_api_keys.dev-apikey}
       
       # short form
-      #api-key: "{vault::vserv-vault.apikeys}"
+      api-key: "{vault::vserv-vault.sid_api_keys}"
       
       ########################################################################################
       #
@@ -156,7 +157,7 @@ form:
       #
       
       # long form
-      sid-key: "{vault::mbp-vault.ibm/devops/otc-setup/config-map.field=ibm-sidkey}"
+      #sid-key: "{vault::mbp-vault.ibm/devops/otc-setup/config-map.field=ibm-sidkey}"
       
       # one combobox allows selection of 'config-map' secret name
       # from list of secret names under the mount path...
@@ -165,7 +166,7 @@ form:
       # list of key names within 'config-map'
       
       # short form
-      #sid-key: "{vault::mbp-vault.config-map.ibm-sidkey}"
+      sid-key: "{vault::mbp-vault.config-map.ibm-sidkey}"
 
       ########################################################################################
 
