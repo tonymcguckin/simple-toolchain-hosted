@@ -81,7 +81,7 @@ services:
   webide:
     service_id: orion
   
-  vserv-vault:
+  sample-vault:
     service_id: hashicorpvault
     parameters:
       name: vserv-vault
@@ -97,7 +97,7 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::vserv-vault.generic/project/otc-setup/apikeys.field=ibm-apikey}"
+      api-key: "{vault::sample-vault.generic/project/otc-setup/apikeys.field=ibm-apikey}"
  
     schema:
       $ref: deploy.json
