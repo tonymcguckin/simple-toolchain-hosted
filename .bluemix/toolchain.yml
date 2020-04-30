@@ -97,9 +97,9 @@ services:
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
       path: "generic/project/otc-setup"
-      secret_filter: "*",
-      default_secret: "apikeys",
-      engine: "kv-1",
+      secret_filter: "*"
+      default_secret: "apikeys"
+      engine: "kv-1"
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
       secret_id: "{vault::sample-keyprotect.secret_id}"
