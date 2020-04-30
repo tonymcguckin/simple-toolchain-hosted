@@ -97,7 +97,7 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::vserv-vault.generic/project/otc-setup/apikeys.field=ibm-apikey}"
+      api-key: "{vault::vserv-vault.ibm-dev-apikey}"
  
     schema:
       $ref: deploy.json
