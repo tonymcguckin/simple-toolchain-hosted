@@ -87,6 +87,9 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       path: "generic/project/otc-setup"
+      secret_filter: "*"
+      default_secret: "apikeys"
+      engine: "kv-1"
 
 form:
   pipeline:
