@@ -99,7 +99,7 @@ services:
       path: "generic/project/otc-setup"
       secret_filter: "*"
       default_secret: "apikey1"
-      access: "create,update"
+      access: "create1,update1"
       engine: "kv-1"
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
