@@ -100,6 +100,7 @@ services:
       secret_filter: "*"
       default_secret: "apikey1"
       access: "create"
+      ui_capability: "storeApiKey,updateApiKey"
       engine: "kv-1"
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
