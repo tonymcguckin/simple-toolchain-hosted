@@ -86,7 +86,7 @@ services:
     service_id: keyprotect
     parameters:
       name: sample-keyprotect
-      region: au-syd
+      region: us-south
       resource-group: default
       instance-name: tmg-kp-1
 
@@ -96,10 +96,9 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
-      path: "generic/project/otc-setup"
-      authentication_method: approle
-      role_id: "{vault::sample-keyprotect.role_id}"
-      secret_id: "{vault::sample-keyprotect.secret_id}"
+      path: "generic/users/tony-mcguckin"
+      authentication_method: github
+      token: ""
 
 form:
   pipeline:
@@ -110,6 +109,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.ibm-syd-apikey}"
+      api-key: "{vault::sample-vault.tmg-dev-apikey}"
     schema:
       $ref: deploy.json
