@@ -96,7 +96,7 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
-      path: "generic/users/tony-mcguckin"
+      path: "generic/user/tony-mcguckin"
       authentication_method: github
       token: ""
 
@@ -109,6 +109,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.tmg-dev-apikey}"
+      api-key: "{vault::sample-vault.ibm-dev-apikey}"
     schema:
       $ref: deploy.json
