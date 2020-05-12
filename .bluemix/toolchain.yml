@@ -98,7 +98,7 @@ services:
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
       path: "generic/user/tony-mcguckin"
       authentication_method: github
-      token: ""
+      token: "{vault::sample-keyprotect.github_token}"
 
 form:
   pipeline:
