@@ -86,7 +86,10 @@ services:
     parameters:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
-      path: generic/project/otc-setup
+      path: "generic/project/otc-setup"
+      #ui_capabilities: "storeApiKey,updateApiKey"
+      #default_secret: "my-apikey"
+      #secret_filter: "config-"
 
 form:
   pipeline:
@@ -97,6 +100,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.ibm-dev-apikey}"
+      api-key: "{vault::sample-vault.ibm-syd-apikey}"
     schema:
       $ref: deploy.json
