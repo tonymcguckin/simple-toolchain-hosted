@@ -96,13 +96,12 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
-      path: "generic/project/otc-setup"
+      path: "generic/user/tony-mcguckin"
       #ui_capabilities: "storeSecret,updateSecret"
       #default_secret: "my-apikey"
       #secret_filter: "config-"
-      authentication_method: approle
-      role_id: "{vault::sample-keyprotect.role_id}"
-      secret_id: "{vault::sample-keyprotect.secret_id}"
+      authentication_method: github
+      role_id: "{vault::sample-keyprotect.github_token}"
 
 form:
   pipeline:
@@ -113,6 +112,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.ibm-syd-apikey}"
+      api-key: "{vault::sample-vault.ibm-syd-apikey.api-key}"
     schema:
       $ref: deploy.json
