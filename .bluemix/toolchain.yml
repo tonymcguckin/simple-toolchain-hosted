@@ -87,7 +87,7 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       path: "generic/project/otc-setup"
-      #ui_capabilities: "storeApiKey,updateApiKey"
+      #ui_capabilities: "storeSecret,updateSecret"
       #default_secret: "my-apikey"
       #secret_filter: "config-"
 
