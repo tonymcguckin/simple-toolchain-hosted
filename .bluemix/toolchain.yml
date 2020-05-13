@@ -82,26 +82,19 @@ services:
   webide:
     service_id: orion
 
-  sample-keyprotect:
-    service_id: keyprotect
-    parameters:
-      name: sample-keyprotect
-      region: us-south
-      resource-group: default
-      instance-name: tmg-kp-1
-
   sample-vault:
     service_id: hashicorpvault
     parameters:
       name: sample-vault
-      server_url: "https://vserv-test.sos.ibm.com:8200"
-      dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
-      path: "generic/user/tony-mcguckin"
+      server_url: "http://127.0.0.1:8200"
+      dashboard_url: "http://127.0.0.1:8200/ui"
+      path: "ibm/devops/otc-setup"
+      engine: "kv-2"
       #ui_capability: "storeApiKey,updateApiKey"
       default_secret: "my-apikey"
-      #secret_filter: "my-"
-      authentication_method: github
-      token: "{vault::sample-keyprotect.github_token}"
+      #secret_filter: "config-"
+      authentication_method: token
+      token: "s.mVSayzhJ5DZw9AERu3T6rcxR"
 
 form:
   pipeline:
