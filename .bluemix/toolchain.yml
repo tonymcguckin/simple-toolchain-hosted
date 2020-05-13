@@ -96,9 +96,9 @@ services:
       name: sample-vault
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
-      path: "generic/user/tony-mcguckin"
+      path: "generic/user/tony-mcguckinh"
       #ui_capability: "storeApiKey,updateApiKey"
-      ui_capability: "updateApiKey"
+      #ui_capability: "updateApiKey"
       authentication_method: github
       token: "{vault::sample-keyprotect.github_token}"
 
