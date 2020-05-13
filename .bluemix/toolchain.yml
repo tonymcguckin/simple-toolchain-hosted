@@ -90,8 +90,8 @@ services:
       dashboard_url: "http://127.0.0.1:8200/ui"
       path: "ibm/devops/otc-setup"
       engine: "kv-2"
-      #ui_capability: "storeApiKey,updateApiKey"
-      default_secret: "my-apikey"
+      #ui_capabilities: "storeApiKey,updateApiKey"
+      #default_secret: "my-apikey"
       #secret_filter: "config-"
       authentication_method: token
       token: "s.mVSayzhJ5DZw9AERu3T6rcxR"
