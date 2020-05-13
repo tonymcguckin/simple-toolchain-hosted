@@ -101,7 +101,7 @@ services:
       #default_secret: "my-apikey"
       #secret_filter: "config-"
       authentication_method: github
-      role_id: "{vault::sample-keyprotect.github_token}"
+      token: "{vault::sample-keyprotect.github_token}"
 
 form:
   pipeline:
