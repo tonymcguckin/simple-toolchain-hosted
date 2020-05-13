@@ -97,6 +97,9 @@ services:
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
       path: "generic/project/otc-setup"
+      #ui_capabilities: "storeApiKey,updateApiKey"
+      #default_secret: "my-apikey"
+      #secret_filter: "config-"
       authentication_method: approle
       role_id: "{vault::sample-keyprotect.role_id}"
       secret_id: "{vault::sample-keyprotect.secret_id}"
