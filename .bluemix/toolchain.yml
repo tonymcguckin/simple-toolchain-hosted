@@ -92,7 +92,7 @@ services:
       engine: "kv-2"
       authentication_method: userpass
       username: champ
-      password: champ
+      password: "{vault::sample-vault.password}"
 
   sample-vault:
     service_id: hashicorpvault
