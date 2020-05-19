@@ -91,11 +91,12 @@ services:
       #path: "ibm/devops/otc-setup"
       path: "ibm/secure"
       engine: "kv-2"
-      #ui_capabilities: "storeSecret,updateSecret"
+      ui_capabilities: "storeSecret,updateSecret"
       #default_secret: "my-apikey"
       #secret_filter: "config-"
-      authentication_method: token
-      token: "s.mVSayzhJ5DZw9AERu3T6rcxR"
+      authentication_method: userpass
+      username: champ
+      password: champ
 
 form:
   pipeline:
