@@ -92,7 +92,7 @@ services:
       path: "ibm/secure"
       engine: "kv-2"
       ui_capabilities: "storeSecret,updateSecret"
-      #default_secret: "my-apikey"
+      default_secret: "ibm-dev-apikey"
       #secret_filter: "config-"
       authentication_method: userpass
       username: champ
