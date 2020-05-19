@@ -88,7 +88,8 @@ services:
       name: sample-vault
       server_url: "http://127.0.0.1:8200"
       dashboard_url: "http://127.0.0.1:8200/ui"
-      path: "ibm/devops/otc-setup"
+      #path: "ibm/devops/otc-setup"
+      path: "ibm/secure"
       engine: "kv-2"
       #ui_capabilities: "storeSecret,updateSecret"
       #default_secret: "my-apikey"
