@@ -96,7 +96,7 @@ services:
       #secret_filter: "config-"
       authentication_method: userpass
       username: champ
-      password: champ
+      password: "{vault::sample-vault.password}"
 
 form:
   pipeline:
