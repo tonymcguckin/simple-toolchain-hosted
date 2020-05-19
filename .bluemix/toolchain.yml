@@ -97,11 +97,11 @@ services:
       server_url: "https://vserv-test.sos.ibm.com:8200"
       dashboard_url: "https://vserv-test.sos.ibm.com:8200/ui"
       path: "generic/user/tony-mcguckin"
-      ui_capabilities: "mintApiKey,mintSidApiKey,storeSecret,updateSecret,deleteSecret"
+      ui_capabilities: "mintKey,storeSecret,updateSecret,deleteSecret"
       #default_secret: "my-apikey"
       #secret_filter: "config-"
       authentication_method: github
-      token: "{vault::sample-keyprotect.github_token}"
+      token: "{vault::sample-keyprotect.github-token}"
 
 form:
   pipeline:
