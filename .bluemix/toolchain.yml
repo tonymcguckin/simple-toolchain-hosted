@@ -82,6 +82,18 @@ services:
   webide:
     service_id: orion
 
+  sample-vault2:
+    service_id: hashicorpvault
+    parameters:
+      name: sample-vault2
+      server_url: "http://127.0.0.1:8200"
+      dashboard_url: "http://127.0.0.1:8200/ui"
+      path: "ibm/secure"
+      engine: "kv-2"
+      authentication_method: userpass
+      username: champ
+      password: champ
+
   sample-vault:
     service_id: hashicorpvault
     parameters:
@@ -96,7 +108,7 @@ services:
       #secret_filter: "config-"
       authentication_method: userpass
       username: champ
-      password: "{vault::sample-vault.password}"
+      password: "{vault::sample-vault2.password}"
 
 form:
   pipeline:
