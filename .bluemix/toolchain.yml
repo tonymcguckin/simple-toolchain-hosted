@@ -85,7 +85,7 @@ services:
   sample-vault:
     service_id: hashicorpvault
     parameters:
-      name: sample-vault
+      name: sample-vault1
       server_url: "http://127.0.0.1:8200"
       dashboard_url: "http://127.0.0.1:8200/ui"
       #path: "ibm/devops/otc-setup"
@@ -107,6 +107,6 @@ form:
       prod-space: '{{prodSpace}}'
       prod-organization: '{{prodOrganization}}'
       prod-region: '{{prodRegion}}'
-      api-key: "{vault::sample-vault.ibm-dev-apikey}"
+      api-key: "{vault::sample-vault1.ibm-dev-apikey}"
     schema:
       $ref: deploy.json
