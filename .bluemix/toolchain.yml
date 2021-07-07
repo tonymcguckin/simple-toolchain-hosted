@@ -13,6 +13,9 @@ template:
   getting_started:
       $ref: "#/messages/template.description"
 
+  $configuration:
+    ENABLE_EXTENSIONS: true
+
   info:
     git url: >
         '[' + $env.repository + '](' + $env.repository + ')'
