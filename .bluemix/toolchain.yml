@@ -1,7 +1,11 @@
 version: '2'
 
+#alias:
+#  foo: "https://..."
+
 messages:
   $i18n: locales.yml
+  #$i18n: foo/locales.yml
 
 template:
   name:
@@ -27,7 +31,7 @@ template:
           '[master]('+ $env.repository + '/tree/master)'
 
 toolchain:
-  name: "DYML - $env Scripting: API Extensions"
+  name: "DYML Scripting: API Extensions"
 
 services:
   sample-repo:
@@ -37,11 +41,16 @@ services:
       t2: "$env.createObject(true, 'mykey')"
       t3: "$env.createObject({ a: $env.byoc_name })"
       t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
+
       t5: "$env.load('params.dyml')"
-      t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
-      t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
-      t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
-      t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
+
+      #t6: "$env.load('foo/params.dyml')"
+      
+      t7: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+      t8: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
+
+      t9: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
+      t10: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
 
   sample-build:
     service_id: pipeline
