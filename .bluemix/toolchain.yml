@@ -15,6 +15,8 @@ template:
 
   $configuration:
     ENABLE_EXTENSIONS: true
+    ENABLE_IF_ELSE: true
+    BASIC_WARNINGS: false
 
   info:
     git url: >
@@ -29,19 +31,17 @@ toolchain:
 
 services:
   sample-repo:
-    $switch:
-      - $default: hostedgit
-        service_id: hostedgit
-        parameters:
-          t1: "$env.createObject(999.997766)"
-          t2: "$env.createObject(true, 'mykey')"
-          t3: "$env.createObject({ a: $env.byoc_name })"
-          t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
-          t5: "$env.load('params.dyml')"
-          t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
-          t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
-          t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
-          t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
+    service_id: hostedgit
+    parameters:
+      t1: "$env.createObject(999.997766)"
+      t2: "$env.createObject(true, 'mykey')"
+      t3: "$env.createObject({ a: $env.byoc_name })"
+      t4: "$$env.createObject({ x: $env.byoc_name, y: true })"
+      t5: "$env.load('params.dyml')"
+      t6: "$env.load('schedule.dyml', 'services.sample-build.parameters.configuration.env.schedule')"
+      t7: "$env.load('env.dyml', 'form.pipeline.parameters.env')"
+      t8: "if($env.byoc_name == 'f') $env.branch; else '{{repository}}';"
+      t9: "if($env.byoc_name !== undefined){ $env.branch; } else if($env.env == 'eu'){ 999; };"
 
   sample-build:
     service_id: pipeline
