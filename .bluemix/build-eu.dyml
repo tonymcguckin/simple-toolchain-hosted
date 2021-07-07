@@ -1,8 +1,8 @@
 build2:
   service_id: pipeline
   parameters:
-    services:
-      - repo
+    #services:
+    #  - repo
     name: 'Pipeline 2'
     ui-pipeline: true
     configuration:
